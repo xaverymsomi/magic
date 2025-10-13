@@ -1,0 +1,31 @@
+<?php
+//
+const DS = '/';
+define('API_APP_ROOT', realpath(dirname(__FILE__)));
+
+$dotenv = Dotenv\Dotenv::createImmutable(API_APP_ROOT, '.env');
+$dotenv->load();
+
+const APP_DIR = '';
+const PUBLIC_PATH = API_APP_ROOT . DS . 'public';
+
+define('URL', $_ENV['URL']);
+define('APP_NAME', $_ENV['APP_NAME']);
+define('PORTAL_URL', $_ENV['PORTAL_URL']);
+define('API_URL', $_ENV['API_URL']);
+define('API_BACKEND_URL', $_ENV['API_BACKEND_URL']);
+define('API_PORTAL_URL', $_ENV['API_PORTAL_URL']);
+
+define('ATTACHMENT_URL', $_ENV['ATTACHMENT_URL']);
+
+define('APP_KEY', $_ENV['APP_KEY']);
+define('PASS_SALT', $_ENV['PASS_SALT']);
+define('PIN_SALT', $_ENV['PIN_SALT']);
+
+define('HASH_ALGO', $_ENV['HASH_ALGO']);
+define('MX_SMS_SENDER_ID', $_ENV['MX_SMS_SENDER_ID']);
+define('MX_SMS_CAMPAIGN', $_ENV['MX_SMS_CAMPAIGN']);
+
+define('MAILGUN_API_KEY', $_ENV['MAILGUN_API_KEY']);
+define('MAILGUN_API_HOSTNAME', $_ENV['MAILGUN_API_HOSTNAME']);
+define('MAILGUN_DOMAIN', $_ENV['MAILGUN_DOMAIN']);

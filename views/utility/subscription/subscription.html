@@ -1,0 +1,52 @@
+<input type="hidden" id="id" name="id" value="" ng-model="form.id" />
+
+<div class="form-group">
+    <label for="txt_mx_user_id" class="col-lg-3 control-label">Mx User</label>
+    <div class="col-lg-9">
+        <input type="text" id="txt_mx_user_id" placeholder="Enter mx user" name="txt_mx_user_id"  class="form-control" ng-class="subscription.txt_mx_user_id.$invalid && !subscription.txt_mx_user_id.$pristine" ng-model="form.txt_mx_user_id" required/>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="opt_mx_report_type_id" class="col-lg-3 control-label"> Report Type</label>
+    <div class="col-lg-9">
+        <select name="opt_mx_report_type_id" id="opt_mx_report_type_id" class="form-control" ng-model="form.opt_mx_report_type_id" required >
+            <option value=""> Select Report Type</option>
+            <option value="1">Collection Report</option>
+            <option value="2">Operators Performance Report</option>
+            <option value="3">Service Request Report</option>
+            <option value="4">Device Usage Report</option>
+            <option value="5">Technical Report</option>
+            <option value="6">General Report</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="opt_mx_frequency_id" class="col-lg-3 control-label"> Frequency</label>
+    <div class="col-lg-9">
+        <select name="opt_mx_frequency_id" id="opt_mx_frequency_id" class="form-control" ng-model="form.opt_mx_frequency_id" required >
+            <option value=""> Select Frequency</option>
+            <option value="1">Daily</option>
+            <option value="2">Weekly</option>
+            <option value="3">Monthly</option>
+            <option value="4">Quaterly</option>
+            <option value="5">Yearly</option>
+        </select>
+    </div>
+</div>
+
+<div class="form-group">
+    <label for="opt_mx_active_id" class="col-lg-3 control-label"> Active</label>
+    <div class="col-lg-9">
+        <select name="opt_mx_active_id" id="opt_mx_active_id" class="form-control" ng-model="form.opt_mx_active_id" required >
+            <option value=""> Select  Active</option>
+            <option value="1">Active</option>
+            <option value="2"></option>
+            <option value="3">Inactive</option>
+        </select>
+    </div>
+</div>
+
+<input type="hidden" id="txt_added_by" name="txt_added_by" value="" ng-model="form.txt_added_by" />
+

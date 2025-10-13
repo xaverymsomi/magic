@@ -1,0 +1,144 @@
+#Disable Directory listing
+Options -Indexes
+Options +FollowSymLinks
+RewriteEngine On
+#HTTPS
+#RewriteCond %{HTTP_HOST} ^yourdomain1.com [NC] 
+#RewriteCond %{HTTPS} off 
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+#RewriteCond %{HTTPS} off
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteBase /
+
+RewriteCond %{REQUEST_URI} !-f
+RewriteCond %{REQUEST_URI} !-d
+RewriteCond %{REQUEST_URI} !-l
+
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-l
+
+RewriteRule ^(.+)$ index.php?url=$1 [QSA,L]
+
+#Strict Cookie
+#Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
+
+#HSTS
+#Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+#
+##DISABLE TRACE METHOD
+#RewriteCond %{REQUEST_METHOD} ^TRACE
+#RewriteRule ^ - [F]
+#
+##DISABLE HEAD METHOD
+#RewriteCond %{REQUEST_METHOD} ^(TRACK|OPTIONS|HEAD|DELETE)
+#RewriteRule ^ - [F]
+#
+## BEGIN cPanel-generated php ini directives, do not edit
+## Manual editing of this file may result in unexpected behavior.
+## To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+## For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+#<IfModule php7_module>
+#   php_flag display_errors Off
+#   php_value max_execution_time 30
+#   php_value max_input_time 60
+#   php_value max_input_vars 1000
+#   php_value memory_limit 32M
+#   php_value post_max_size 25M
+#   php_value session.gc_maxlifetime 1440
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+#   php_value upload_max_filesize 10M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+#<IfModule lsapi_module>
+#   php_flag display_errors Off
+#   php_value max_execution_time 30
+#   php_value max_input_time 60
+#   php_value max_input_vars 1000
+#   php_value memory_limit 32M
+#   php_value post_max_size 25M
+#   php_value session.gc_maxlifetime 1440
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+#   php_value upload_max_filesize 10M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+## END cPanel-generated php ini directives, do not edit
+#
+## BEGIN cPanel-generated php ini directives, do not edit
+## Manual editing of this file may result in unexpected behavior.
+## To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+## For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+#<IfModule php5_module>
+#   php_flag asp_tags Off
+#   php_flag display_errors On
+#   php_value max_execution_time 30
+#   php_value max_input_time 60
+#   php_value max_input_vars 1000
+#   php_value memory_limit 128M
+#   php_value post_max_size 8M
+#   php_value session.gc_maxlifetime 1440
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+#   php_value upload_max_filesize 10M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+#<IfModule lsapi_module>
+#   php_flag asp_tags Off
+#   php_flag display_errors On
+#   php_value max_execution_time 30
+#   php_value max_input_time 60
+#   php_value max_input_vars 1000
+#   php_value memory_limit 128M
+#   php_value post_max_size 8M
+#   php_value session.gc_maxlifetime 1440
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+#   php_value upload_max_filesize 10M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+## END cPanel-generated php ini directives, do not edit
+#
+## php -- BEGIN cPanel-generated handler, do not edit
+## Set the “ea-php74” package as the default “PHP” programming language.
+#<IfModule mime_module>
+#  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+#</IfModule>
+## php -- END cPanel-generated handler, do not edit
+#
+## BEGIN cPanel-generated php ini directives, do not edit
+## Manual editing of this file may result in unexpected behavior.
+## To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+## For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+#<IfModule php7_module>
+#   php_flag display_errors Off
+#   php_value max_execution_time 30
+#   php_value max_input_time 60
+#   php_value max_input_vars 1000
+#   php_value memory_limit 128M
+#   php_value post_max_size 8M
+#   php_value session.gc_maxlifetime 1440
+#   php_value session.save_path "/varlocalhost:8082/cpanel/php/sessions/ea-php74"
+#   php_value upload_max_filesize 10M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+#<IfModule lsapi_module>
+#   php_flag display_errors Off
+#   php_value max_execution_time 30
+#   php_value max_input_time 60
+#   php_value max_input_vars 1000
+#   php_value memory_limit 128M
+#   php_value post_max_size 8M
+#   php_value session.gc_maxlifetime 1440
+#   php_value session.save_path "/var/cpanel/php/sessions/ea-php74"
+#   php_value upload_max_filesize 10M
+#   php_flag zlib.output_compression Off
+#</IfModule>
+# END cPanel-generated php ini directives, do not edit
+php_flag display_startup_errors on
+php_flag display_errors on
+php_flag log_errors on
+php_value error_log "logs/php-error.log"
+
+<FilesMatch "^\.">
+Order allow,deny
+Deny from all
+</FilesMatch>

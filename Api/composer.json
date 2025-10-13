@@ -1,0 +1,44 @@
+{
+  "autoload": {
+    "classmap": [
+      ""
+    ],
+    "psr-4": {
+      "Core\\": "core/",
+      "Database\\": "core/database/",
+      "Libs\\": "libs/",
+      "Modules\\": "modules/"
+    }
+  },
+  "require": {
+    "evilfreelancer/routeros-api-php": "^1.4",
+    "ext-json": "*",
+    "ext-pdo": "*",
+    "fpdf/fpdf": "^1.84",
+    "aferrandini/phpqrcode": "1.0.1",
+    "mailgun/mailgun-php": "*",
+    "nyholm/psr7": "^1.8",
+    "kriswallsmith/buzz": "^1.2",
+    "ext-openssl": "*",
+    "ext-simplexml": "*",
+    "endroid/qr-code": "*",
+    "phpmailer/phpmailer": "*",
+    "twbs/bootstrap": "3.3.*",
+    "ext-fileinfo": "*",
+    "ext-curl": "*",
+    "phpoffice/phpspreadsheet": "*",
+    "vlucas/phpdotenv": "*",
+    "dompdf/dompdf": "*",
+    "alphaolomi/mrz": "^1.0",
+    "ext-gd": "*",
+    "chillerlan/php-qrcode": "^5.0"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    },
+    "platform": {
+      "php": "8"
+    }
+  }
+}

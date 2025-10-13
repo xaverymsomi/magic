@@ -1,0 +1,168 @@
+<?php
+
+define('API_BASE_PATH', dirname(__DIR__));
+const API_PUBLIC_PATH = API_BASE_PATH . '/public';
+const API_LOG_PATH = API_BASE_PATH . '/logs';
+
+const MX_USER_CREATED_REASON = 1;
+
+// *****************************************************************
+// statuses and states
+const ACTIVE = 1;
+const INACTIVE = 4;
+
+// gender
+const MALE = 1;
+const FEMALE = 2;
+
+// invoice stats
+const PAID_INVOICE = 1;
+const UNPAID_INVOICE = 2;
+const PARTIAL_INVOICE = 3;
+const CANCELLED_INVOICE = 4;
+
+// invoice types
+const LONG_TERM_WP_FEE = 1;
+const RENEWED_WP_FEE = 2;
+const CONTRACT_FEE = 3;
+const TEMPORARY_WP_FEE = 4;
+const FOREIGNER_MARRIAGE_WP_FEE = 5;
+const EXEMPTION_WP_RENEWAL_FEE = 6;
+
+// payment stats
+const SUCCESSFUL_PAYMENT = 1;
+const FAILED_PAYMENT = 4;
+
+// payment provider
+const PP_PBZ = 1;
+const PP_ZAN_MALIPO = 2;
+
+// institution stats
+const APPROVED_INSTITUTION = 1;
+const INSTITUTION_PENDING_DOC_VERIFICATION = 2;
+const INSTITUTION_PENDING_SURVEY_CONFIRMATION = 3;
+const INSTITUTION_PENDING_SURVEY = 4;
+const INSTITUTION_IN_SURVEY = 5;
+const INSTITUTION_PENDING_APPROVAL = 7;
+const REJECTED_INSTITUTION = 8;
+
+// notification types
+const GENERAL_NOTIFICATION = 1;
+const SPECIFIC_NOTIFICATION = 2;
+
+// institution types
+const PRIVATE_INSTITUTION = 1;
+const GOVT_INSTITUTION = 2;
+
+// attachment stats
+const APPROVED_ATTACHMENT = 1;
+const ATTACHMENT_PENDING_APPROVAL = 2;
+const REJECTED_ATTACHMENT = 4;
+
+// attachment types
+const RECOGNITION_LETTER = 1;
+const MEMORANDUM = 2;
+const TIN = 3;
+const BPRA_CERTIFICATE = 4;
+const BUSINESS_LICENCE = 5;
+const APPROVAL_LETTER = 6;
+const INSTITUTION_LETTER = 7;
+const EMPLOYMENT_CONTRACT = 8;
+const JOB_DESCRIPTION = 9;
+const CV_OR_OSH_CERTIFICATE = 10;
+const ACADEMIC_CERTIFICATE = 11;
+const HOME_COUNTRY_POLICE_CLEARANCE = 12;
+const HOME_COUNTRY_MEDICAL_CHECKUP = 13;
+const PASSPORT_SIZE = 14;
+const OTHER_RELEVANT_DOCUMENT = 15;
+const COMPANY_REGISTRATION_CERTIFICATE = 16;
+const MEMORANDUM_OF_UNDERSTANDING = 17;
+const ZNZ_POLICE_CLEARANCE = 18;
+const EMPLOYEE_RENEWAL_MEDICAL_CHECKUP = 19;
+const TAX_CLEARANCE = 20;
+const PASSPORT_FILE = 21;
+const MINISTRY_LETTER = 22;
+const GOVT_COMPANY_MEMORANDUM = 23;
+const ZNZ_APPLICATION_LETTER = 24;
+const SHEHA_LETTER = 25;
+const BIRTH_CERTIFICATE = 26;
+const ZAN_ID = 27;
+const ZNZ_MARRIAGE_CERTIFICATE = 28;
+const CHILD_BIRTH_CERTIFICATE = 29;
+const STATE_HOUSE_LETTER = 30;
+
+// entity types
+const INSTITUTION = 1;
+const APPLICANT = 2;
+const AGENCY = 3;
+
+// application types
+const NEW_APPLICATION = 1;
+const RENEWAL_APPLICATION = 2;
+
+// application stats
+const APPROVED_APPLICATION = 1;
+const PENDING_APPLICATION_FEE = 2;
+const APPLICATION_PENDING_DOC_VERIFICATION = 3;
+const APPLICATION_PENDING_APPROVAL = 8;
+const DENIED_APPLICATION = 9;
+
+// currencies
+const TZS_CURRENCY = 1;
+const USD_CURRENCY = 2;
+
+// permit stats
+const ACTIVE_PERMIT = 1;
+const PENDING_BIOMETRICS = 2;
+const PENDING_PRINTING = 3;
+const BLOCKED_PERMIT = 4;
+const EXPIRED_PERMIT = 5;
+const REPRINTED_PERMIT = 6;
+
+// permit types
+const LONG_TERM_PERMIT = 1;
+const TEMPORARY_PERMIT = 2;
+const EXEMPTION_PERMIT = 3;
+const FOREIGNER_PERMIT = 4;
+const STUDENT_PERMIT = 5;
+const DIASPORA_PERMIT = 7;
+
+// survey stats
+const COMPLETED_SURVEY = 1;
+const PENDING_INSPECTOR_ASSIGNMENT = 2;
+const PENDING_SURVEY = 3;
+const PENDING_SURVEY_COMPLETION = 5;
+const REJECTED_SURVEY = 6;
+
+// resident type
+const CITIZEN = 1;
+const NON_CITIZEN = 2;
+
+// authority
+const HEAD_OFFICE = 1;
+const ZIPA = 2;
+const RAHISI_SOLN = 3;
+
+// service types
+const WORK_PERMIT = 1;
+
+// identification types
+const PASSPORT_ID_TYPE = 1;
+
+// agency types
+const INTERNATIONAL_AGENCY = 1;
+const LOCAL_AGENCY = 2;
+
+// agency status
+const ACTIVE_AGENCY = 1;
+const INACTIVE_AGENCY = 2;
+const PENDING_AGENCY_VERIFICATION = 3;
+
+
+const NMB_PAYMENT_SETUP_CURRENCY_USD = '18';
+const NMB_PAYMENT_SETUP_CURRENCY_TZS = '17';
+
+
+//applicant type
+const APPLICANT_T_AND_JOB = 1;
+const TANZANIA_ID = 201;

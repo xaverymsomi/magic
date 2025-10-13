@@ -1,0 +1,99 @@
+<div class="row">
+            <div class="col-md-12 col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h5 class="text-center" style="font-size: 1.3em; opacity: 0.7; text-transform: uppercase">Fill the form
+                            to configure a new notificaton</h5>
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-2 col-lg-2"></div>
+                            <div class="col-md-8 col-lg-8">
+                                <div class="panel panel-default">
+                                    <div class="panel-body">
+                                        <h5 class="text-start"
+                                            style="font-size: 1.2em; opacity: 0.7; text-transform: uppercase;">Notification details</h5>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="opt_mx_notification_type_id" class="col-md-12 col-lg-12">Notification Type</label>
+                                                                <select class="form-control" id="opt_mx_notification_type_id" name="opt_mx_notification_type_id"
+                                                                        ng-options="value.id as value.name for (key, value) in dropdowns.opt_mx_notification_type_ids" ng-model="form.opt_mx_notification_type_id">
+                                                                    <option value="">Select Notification Type</option>
+
+                                                                </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div ng-show="form.opt_mx_notification_type_id === 2">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="opt_mx_application_id" class="col-md-12 col-lg-12">Application</label>
+                                                        <select class="form-control" id="opt_mx_application_id" name="opt_mx_application_id"
+                                                                ng-options="value.id as value.name for (key, value) in dropdowns.opt_mx_application_ids" ng-model="form.opt_mx_application_id">
+                                                            <option value="">Select Application To Notify</option>
+
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="tar_message" class="col-md-12 col-lg-12">Message</label>
+                                                        <div class="col-md-12 col-lg-12">
+                                                    <textarea  id="tar_message" placeholder="Enter Notification Message"
+                                                               name="tar_message" class="form-control"
+                                                               ng-class="user.tar_message.$invalid && !user.tar_message.$pristine"
+                                                               ng-model="form.tar_message" required >
+                                                    </textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="dat_from_date" class="col-md-12 col-lg-12">From Date</label>
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <input type="date" id="dat_from_date" placeholder="Enter From Date"
+                                                                   name="dat_from_date" class="form-control"
+                                                                   ng-class="user.dat_from_date.$invalid && !user.dat_from_date.$pristine"
+                                                                   ng-model="form.dat_from_date" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-6">
+                                                <div class="col-md-12 col-lg-12">
+                                                    <div class="form-group">
+                                                        <label for="dat_to_date" class="col-md-12 col-lg-12">To Date</label>
+                                                        <div class="col-md-12 col-lg-12">
+                                                            <input type="date" id="dat_to_date" placeholder="Enter To Date"
+                                                                   name="dat_to_date" class="form-control"
+                                                                   ng-class="user.dat_to_date.$invalid && !user.dat_to_date.$pristine"
+                                                                   ng-model="form.dat_to_date" required />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+

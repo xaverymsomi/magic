@@ -1,0 +1,42 @@
+{
+  "require": {
+    "php": "^8.2",
+    "phpmailer/phpmailer": "*",
+    "twbs/bootstrap": "3.3.*",
+    "ext-pdo": "*",
+    "ext-json": "*",
+    "ext-fileinfo": "*",
+    "ext-curl": "*",
+    "phpoffice/phpspreadsheet": "*",
+    "mailgun/mailgun-php": "*",
+    "kriswallsmith/buzz": "*",
+    "nyholm/psr7": "*",
+    "fpdf/fpdf": "^1.84",
+    "vlucas/phpdotenv": "*",
+    "ext-simplexml": "*",
+    "dompdf/dompdf": "*",
+    "endroid/qr-code": "*",
+    "alphaolomi/mrz": "^1.0",
+    "chillerlan/php-qrcode": "^5.0",
+    "aferrandini/phpqrcode": "^1.0",
+    "ext-gd": "*",
+    "ext-openssl": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Libs\\": "libs",
+      "Helpers\\": "helpers",
+      "Modules\\": "modules",
+      "Payments\\": "payments"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  },
+  "style": "default",
+  "tailwind": {},
+  "rsc": false,
+  "aliases": {}
+}
