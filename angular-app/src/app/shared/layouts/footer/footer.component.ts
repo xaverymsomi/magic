@@ -5,15 +5,10 @@ import { CommonModule } from '@angular/common';
   selector: 'app-footer',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <!-- Toast Container - Migrated from views/footer.php line 12 -->
-    <div class="toast-container" id="toast-container">
-      <!-- Toast messages will be dynamically added here -->
-    </div>
-  `,
+  templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  // Footer component for any global footer content
-  // Toast notifications will be handled by a separate service
+  currentYear = new Date().getFullYear();
+  appVersion = '2.0.0'; // Update this as needed
 }

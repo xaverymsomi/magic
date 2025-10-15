@@ -1,137 +1,75 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
-import { User } from '../../models/auth.models';
-import { MenuService, MenuItem } from '../../../core/services/menu.service';
+import { AuthService } from '@core/services/auth.service';
+import { MenuService } from '@core/services/menu.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `
-    <!-- Logo Section - Migrated from views/body.php lines 6-8 -->
-    <div id="mabrexLogoPlaceholder" class="hidden-sm hidden-xs bg-info" [class.collapsed]="isCollapsed">
-      <img src="/assets/images/rahisi/official_rahisi_logo_coloured.png" class="img img-responsive">
-    </div>
-    
-    <!-- Sidebar Navigation - Migrated from views/body.php lines 9-28 -->
-    <div id="mabrexSideNavBar" 
-         style="height: 100dvh;" 
-         class="hidden-sm hidden-xs scrolled-div"
-         [class.collapsed]="isCollapsed">
-      <ul class="list-group">
-        <li *ngFor="let menu of menus" class="list-group-item">
-          <a (click)="loadPage(menu.link, menu.title, menu.id)" 
-             class="page-link" 
-             [attr.data-link]="menu.link" 
-             [attr.title]="menu.title">
-            <i class="pe pe-7s-{{menu.icon}} pe-2x pe-va pe-fw"></i>
-            <span> {{menu.name}} </span>
-            <i class="pe pe-7s-angle-right pe-2x pe-va pe-fw pull-right" 
-               *ngIf="menu.submenus.length > 0 && current !== menu.id"></i>
-            <i class="pe pe-7s-angle-down pe-2x pe-va pe-fw pull-right" 
-               *ngIf="menu.submenus.length > 0 && current === menu.id"></i>
-          </a>
-          
-          <ul class="mabrex-submenu" *ngIf="current === menu.id && menu.submenus.length > 0">
-            <li *ngFor="let sub of menu.submenus">
-              <a (click)="loadPage(sub.link, sub.title, menu.id)" 
-                 class="page-link" 
-                 [attr.data-link]="sub.link" 
-                 [attr.title]="sub.title">
-                <i class="pe{{sub.icon}} pe-va pe-fw"></i> {{sub.name}}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
-    <!-- Mobile Logo - Migrated from views/body.php lines 30-32 -->
-    <div id="mabrexLogoPlaceholderMobile" class="hidden-md hidden-lg bg-info" style="padding-left: 7px;">
-      <img src="/assets/images/rahisi/official_rahisi_minimal_logo_coloured.png">
-    </div>
-    
-    <!-- Mobile Sidebar - Migrated from views/body.php lines 33-49 -->
-    <div id="mabrexSideNavBarSmall" class="hidden-md hidden-lg">
-      <ul class="list-group">
-        <li *ngFor="let menu of menus" class="list-group-item">
-          <a (click)="loadPage(menu.link, menu.title, menu.id)" 
-             class="page-link" 
-             [attr.data-link]="menu.link" 
-             [attr.title]="menu.title">
-            <i class="pe pe-7s-{{menu.icon}} pe-2x pe-va" 
-               [class]="(current === menu.id || current_link === menu.id) ? ' ' : ''"></i>
-          </a>
-          
-          <ul class="mabrex-submenuSmall" 
-              *ngIf="current === menu.id && menu.submenus.length > 0 && current_task === 'display'">
-            <li *ngFor="let sub of menu.submenus">
-              <a (click)="loadPage(sub.link, sub.title, menu.id); setSubMenu(menu.id)" 
-                 class="page-link" 
-                 [attr.data-link]="sub.link" 
-                 [attr.title]="sub.title">
-                <i class="pe {{sub.icon}} pe-2x pe-va pe-fw"></i> {{sub.name}}
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  `,
+  templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
   @Input() isCollapsed = false;
-  @Input() user: User | null = null;
+  @Output() toggleSidebar = new EventEmitter<void>();
 
-  menus: MenuItem[] = [];
-  current = '';
-  current_link = '';
-  current_task = 'display';
+  activeSubmenu: string | null = null;
+  currentRoute = '';
 
   constructor(
+    private authService: AuthService,
     private menuService: MenuService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    if (this.user) {
-      this.getUserMenu(this.user.id);
-    }
-    // Initialize with no menu expanded
-    this.current = '';
-  }
-
-  getUserMenu(userId: string | number): void {
-    this.menuService.getUserMenu(userId).subscribe(
-      menus => {
-        this.menus = menus;
-      },
-      error => {
-        console.error('Failed to load user menu:', error);
-      }
-    );
-  }
-
-  loadPage(link: string, title: string, menuId: string): void {
-    // Toggle submenu if clicking on same menu item
-    if (this.current === menuId) {
-      this.current = '';
-    } else {
-      this.current = menuId;
-    }
-    this.current_link = menuId;
-    
-    // Navigate to the route
-    this.router.navigate([link]).catch(error => {
-      console.error('Navigation failed:', error);
-      // If route doesn't exist, stay on current page
+    // Track current route for active state
+    this.router.events.subscribe(() => {
+      this.currentRoute = this.router.url;
     });
   }
 
-  setSubMenu(menuId: string): void {
-    // TODO: Implement submenu logic for mobile
-    console.log('Set submenu:', menuId);
+  // Preserve Perm_Auth::verifyPermission() logic
+  hasPermission(permission: string): boolean {
+    return this.authService.hasPermission(permission);
+  }
+
+  // Preserve menuController::loadPage() logic
+  navigateToPage(link: string, title: string, id: string): void {
+    // Store current page info (matching AngularJS localStorage usage)
+    localStorage.setItem('CurrentLink', link);
+    localStorage.setItem('CurrentPageTitle', title);
+    localStorage.setItem('CurrentLinkId', id);
+
+    // Navigate using Angular router
+    this.router.navigate([link]);
+
+    // Close submenu on mobile
+    if (window.innerWidth <= 768) {
+      this.toggleSidebar.emit();
+    }
+  }
+
+  // Preserve formController::showForm() logic
+  openForm(url: string, action: string, params: any[] = []): void {
+    // This will be implemented when we migrate the form service
+    console.log(`Opening form: ${url}/${action}`, params);
+    // TODO: Implement form modal opening logic
+  }
+
+  toggleSubmenu(menu: string): void {
+    if (this.isCollapsed) return;
+
+    this.activeSubmenu = this.activeSubmenu === menu ? null : menu;
+  }
+
+  onToggleSidebar(): void {
+    this.toggleSidebar.emit();
+  }
+
+  isActiveRoute(route: string): boolean {
+    return this.currentRoute === route || this.currentRoute.startsWith(route + '/');
   }
 }

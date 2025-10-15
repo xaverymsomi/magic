@@ -1,0 +1,37 @@
+<div class="main-layout">
+  <!-- Sidebar -->
+  <app-sidebar
+    [isCollapsed]="sidebarCollapsed"
+    (toggleSidebar)="toggleSidebar()"
+    class="sidebar-container">
+  </app-sidebar>
+
+  <!-- Main Content Area -->
+  <div class="content-wrapper" [class.sidebar-collapsed]="sidebarCollapsed">
+    <!-- Header -->
+    <app-header
+      [sidebarCollapsed]="sidebarCollapsed"
+      (toggleSidebar)="toggleSidebar()"
+      class="header-container">
+    </app-header>
+
+    <!-- Page Content -->
+    <main class="page-content" id="mabrexPageContent">
+      <router-outlet></router-outlet>
+    </main>
+
+    <!-- Footer -->
+    <app-footer class="footer-container"></app-footer>
+  </div>
+
+  <!-- Loading Overlay -->
+  <div class="overlay" [class.hidden]="!showOverlay">
+    <div class="overlay-content">
+      <div class="loading-spinner"></div>
+      <p>Loading...</p>
+    </div>
+  </div>
+
+  <!-- Notification Area -->
+  <div class="notification-area" id="notification-area"></div>
+</div>

@@ -1,0 +1,111 @@
+<nav class="sidebar" [class.collapsed]="isCollapsed">
+  <!-- Logo Section -->
+  <div class="sidebar-header">
+    <div class="logo-container" *ngIf="!isCollapsed">
+      <img src="/assets/images/rahisi/official_logo.png" alt="Rahisi" class="logo">
+      <span class="brand-text">rahisi</span>
+    </div>
+    <div class="logo-mini" *ngIf="isCollapsed">
+      <img src="/assets/images/rahisi/official_logo.png" alt="R" class="logo-mini-img">
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div class="sidebar-menu">
+    <ul class="nav-list">
+
+      <!-- Home -->
+      <li class="nav-item" [class.active]="isActiveRoute('/dashboard')">
+        <a class="nav-link" [routerLink]="['/dashboard']" (click)="navigateToPage('/dashboard', 'Dashboard', 'home')">
+          <i class="nav-icon fas fa-home"></i>
+          <span class="nav-text" *ngIf="!isCollapsed">Home</span>
+        </a>
+      </li>
+
+      <!-- Users -->
+      <li class="nav-item" [class.has-submenu]="true" *ngIf="hasPermission('view_users')">
+        <a class="nav-link" (click)="toggleSubmenu('users')" [class.active]="activeSubmenu === 'users'">
+          <i class="nav-icon fas fa-users"></i>
+          <span class="nav-text" *ngIf="!isCollapsed">Users</span>
+          <i class="nav-arrow fas fa-chevron-right" *ngIf="!isCollapsed" [class.rotated]="activeSubmenu === 'users'"></i>
+        </a>
+        <ul class="submenu" *ngIf="activeSubmenu === 'users' && !isCollapsed">
+          <li class="submenu-item">
+            <a class="submenu-link" (click)="navigateToPage('/User/index', 'Manage Users', 'users')">
+              <i class="submenu-icon fas fa-list"></i>
+              Manage Users
+            </a>
+          </li>
+          <li class="submenu-item" *ngIf="hasPermission('create_user')">
+            <a class="submenu-link" (click)="openForm('User', 'Create')">
+              <i class="submenu-icon fas fa-plus"></i>
+              Add New User
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Reports -->
+      <li class="nav-item" [class.has-submenu]="true" *ngIf="hasPermission('view_reports')">
+        <a class="nav-link" (click)="toggleSubmenu('reports')" [class.active]="activeSubmenu === 'reports'">
+          <i class="nav-icon fas fa-chart-bar"></i>
+          <span class="nav-text" *ngIf="!isCollapsed">Reports</span>
+          <i class="nav-arrow fas fa-chevron-right" *ngIf="!isCollapsed" [class.rotated]="activeSubmenu === 'reports'"></i>
+        </a>
+        <ul class="submenu" *ngIf="activeSubmenu === 'reports' && !isCollapsed">
+          <li class="submenu-item">
+            <a class="submenu-link" (click)="navigateToPage('/Report/index', 'System Reports', 'reports')">
+              <i class="submenu-icon fas fa-file-alt"></i>
+              System Reports
+            </a>
+          </li>
+          <li class="submenu-item">
+            <a class="submenu-link" (click)="navigateToPage('/Report/analytics', 'Analytics', 'analytics')">
+              <i class="submenu-icon fas fa-analytics"></i>
+              Analytics
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <!-- Miscellaneous -->
+      <li class="nav-item" *ngIf="hasPermission('view_miscellaneous')">
+        <a class="nav-link" (click)="navigateToPage('/Miscellaneous/index', 'Miscellaneous', 'misc')">
+          <i class="nav-icon fas fa-cogs"></i>
+          <span class="nav-text" *ngIf="!isCollapsed">Miscellaneous</span>
+        </a>
+      </li>
+
+      <!-- Utility -->
+      <li class="nav-item" [class.has-submenu]="true" *ngIf="hasPermission('view_utility')">
+        <a class="nav-link" (click)="toggleSubmenu('utility')" [class.active]="activeSubmenu === 'utility'">
+          <i class="nav-icon fas fa-tools"></i>
+          <span class="nav-text" *ngIf="!isCollapsed">Utility</span>
+          <i class="nav-arrow fas fa-chevron-right" *ngIf="!isCollapsed" [class.rotated]="activeSubmenu === 'utility'"></i>
+        </a>
+        <ul class="submenu" *ngIf="activeSubmenu === 'utility' && !isCollapsed">
+          <li class="submenu-item">
+            <a class="submenu-link" (click)="navigateToPage('/Utility/backup', 'Database Backup', 'backup')">
+              <i class="submenu-icon fas fa-database"></i>
+              Database Backup
+            </a>
+          </li>
+          <li class="submenu-item">
+            <a class="submenu-link" (click)="navigateToPage('/Utility/settings', 'System Settings', 'settings')">
+              <i class="submenu-icon fas fa-cog"></i>
+              System Settings
+            </a>
+          </li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+
+  <!-- Collapse Toggle -->
+  <div class="sidebar-footer">
+    <button class="collapse-btn" (click)="onToggleSidebar()" [title]="isCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'">
+      <i class="fas" [class.fa-chevron-right]="isCollapsed" [class.fa-chevron-left]="!isCollapsed"></i>
+    </button>
+  </div>
+</nav>

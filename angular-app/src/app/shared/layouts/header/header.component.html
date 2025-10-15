@@ -1,0 +1,56 @@
+<header class="app-header">
+  <div class="header-content">
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-toggle d-md-none" (click)="onToggleSidebar()">
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Page Title -->
+    <div class="page-title">
+      <h1>{{ pageTitle }}</h1>
+      <nav class="breadcrumb" *ngIf="breadcrumbs.length > 0">
+        <span *ngFor="let crumb of breadcrumbs; let last = last">
+          <a *ngIf="!last && crumb.route" [routerLink]="crumb.route">{{ crumb.label }}</a>
+          <span *ngIf="last || !crumb.route">{{ crumb.label }}</span>
+          <i *ngIf="!last" class="fas fa-chevron-right"></i>
+        </span>
+      </nav>
+    </div>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- User Profile -->
+      <div class="user-profile" *ngIf="currentUser">
+        <div class="user-info">
+          <img [src]="currentUser.avatar || '/assets/images/default-avatar.png'"
+               [alt]="currentUser.username"
+               class="user-avatar">
+          <div class="user-details">
+            <span class="user-name">{{ currentUser.username || currentUser.email }}</span>
+            <span class="user-role">{{ currentUser.role }}</span>
+          </div>
+        </div>
+
+        <!-- User Dropdown -->
+        <div class="dropdown">
+          <button class="dropdown-toggle" (click)="toggleUserDropdown()">
+            <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <div class="dropdown-menu" [class.show]="showUserDropdown">
+            <a class="dropdown-item" (click)="viewProfile()">
+              <i class="fas fa-user"></i> Profile
+            </a>
+            <a class="dropdown-item" (click)="changePassword()">
+              <i class="fas fa-key"></i> Change Password
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="logout()">
+              <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,40 +1,37 @@
-// Authentication Models - Preserving Magic Framework Business Logic
 export interface User {
-  id: number;
+  id: string;
+  username: string;
   email: string;
-  username?: string;
-  permissions: Permission[];
-  session_data?: any;
-}
-
-export interface Permission {
-  id: number;
-  name: string;
-  module: string;
-  action?: string;
+  avatar?: string;
+  role: string;
+  permissions: string[];
+  created_at?: string;
+  updated_at?: string;
+  last_login?: string;
+  is_active?: boolean;
 }
 
 export interface LoginRequest {
   email: string;
   password: string;
-  captcha: string;
-  return_url?: string;
+  remember_me?: boolean;
 }
 
 export interface LoginResponse {
-  status: boolean;
-  code: number;
+  success: boolean;
   message: string;
-  user?: User;
-  redirect_url?: string;
-  session_id?: string;
+  data?: {
+    user: User;
+    token: string;
+    expires_in: number;
+  };
+  error?: string;
 }
 
-export interface RecoverPasswordRequest {
-  email: string;
-}
-
-export interface CaptchaResponse {
-  image_data: string;
-  session_token: string;
+export interface AuthState {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  loading: boolean;
+  error: string | null;
 }

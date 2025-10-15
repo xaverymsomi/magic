@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
-import { AuthService } from '../../../core/services/auth.service';
-import { User } from '../../models/auth.models';
 
 @Component({
   selector: 'app-main-layout',
@@ -13,68 +11,45 @@ import { User } from '../../models/auth.models';
   imports: [
     CommonModule,
     RouterOutlet,
-    HeaderComponent,
     SidebarComponent,
+    HeaderComponent,
     FooterComponent
   ],
-  template: `
-    <div class="main" name="main" [class.sidebar-collapsed]="sidebarCollapsed">
-      <!-- Sidebar Navigation -->
-      <app-sidebar 
-        [isCollapsed]="sidebarCollapsed"
-        [user]="currentUser">
-      </app-sidebar>
-
-      <!-- Header/Top Navigation -->
-      <app-header 
-        [user]="currentUser"
-        (menuToggle)="toggleSidebar()"
-        (logout)="handleLogout()">
-      </app-header>
-
-      <!-- Main Content Area -->
-      <div class="container-fluid">
-        <div id="mabrexPageContentHolder" class="row">
-          <router-outlet></router-outlet>
-        </div>
-      </div>
-
-      <!-- Loading Overlay -->
-      <div class="overlay" [class.hidden]="!isLoading">
-        <div class="overlay__inner">
-          <div class="overlay__content">
-            <span class="spinner"></span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Footer -->
-      <app-footer></app-footer>
-    </div>
-  `,
+  templateUrl: './main-layout.component.html',
   styleUrls: ['./main-layout.component.scss']
 })
 export class MainLayoutComponent implements OnInit {
-  currentUser: User | null = null;
   sidebarCollapsed = false;
-  isLoading = false;
+  showOverlay = false;
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   ngOnInit(): void {
-    // Subscribe to current user
-    this.authService.currentUser$.subscribe(user => {
-      this.currentUser = user;
-    });
+    // Initialize layout state
+    this.loadLayoutPreferences();
   }
 
   toggleSidebar(): void {
     this.sidebarCollapsed = !this.sidebarCollapsed;
+    this.saveLayoutPreferences();
   }
 
-  handleLogout(): void {
-    this.authService.logout().subscribe(() => {
-      // Logout handled by auth service
-    });
+  private loadLayoutPreferences(): void {
+    const collapsed = localStorage.getItem('sidebarCollapsed');
+    if (collapsed !== null) {
+      this.sidebarCollapsed = JSON.parse(collapsed);
+    }
+  }
+
+  private saveLayoutPreferences(): void {
+    localStorage.setItem('sidebarCollapsed', JSON.stringify(this.sidebarCollapsed));
+  }
+
+  showLoadingOverlay(): void {
+    this.showOverlay = true;
+  }
+
+  hideLoadingOverlay(): void {
+    this.showOverlay = false;
   }
 }

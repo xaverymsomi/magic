@@ -1,93 +1,129 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { User } from '../../models/auth.models';
+import { RouterModule, Router, NavigationEnd } from '@angular/router';
+import { AuthService } from '@core/services/auth.service';
+import { User } from '@shared/models/auth.models';
+import { filter } from 'rxjs/operators';
+
+export interface Breadcrumb {
+  label: string;
+  route?: string;
+}
 
 @Component({
   selector: 'app-header',
   standalone: true,
   imports: [CommonModule, RouterModule],
-  template: `
-    <!-- Top Navigation Bar - Migrated from views/body.php lines 53-83 -->
-    <div id="mabrexTopNavBar" class="navbar navbar-default navbar-fixed-top">
-      <ul class="nav navbar-nav hidden-sm hidden-xs">
-        <li id="mabrexMenuToggler" 
-            style="margin: 3px; padding: 6px 2px 6px 20px; cursor: pointer;"
-            (click)="onMenuToggle()">
-          <i class="pe pe-7s-menu pull-left pe-2x pe-fw"></i>
-        </li>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-right">
-        <li style="padding-top:15px;" class="hidden-xs" *ngIf="user">
-          {{ user.username || user.email }}
-        </li>
-        
-        <li class="dropdown pull-right">
-          <a style="margin-right: 10px; padding: 11px 10px 7px 10px;" 
-             href="#" 
-             class="dropdown-toggle" 
-             data-toggle="dropdown" 
-             role="button" 
-             aria-haspopup="true" 
-             aria-expanded="false"
-             (click)="toggleUserMenu($event)">
-            <i class="pe pe-7s-user pe-2x pe-fw"></i>
-          </a>
-          
-          <ul class="dropdown-menu" [class.show]="userMenuOpen">
-            <li>
-              <a class="page-link" routerLink="/user/password">
-                <i class="pe pe-7s-key pe-rotate-90 pe-fw pe-2x pe-va"></i>
-                Change Password
-              </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a class="page-link" href="#" (click)="onLogout($event)">
-                <i class="pe pe-7s-download pe-rotate-270 pe-fw pe-2x pe-va"></i>
-                Logout
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      
-      <!-- Progress Bar -->
-      <div class="progress" id="progress1" [style.visibility]="showProgress ? 'visible' : 'hidden'">
-        <div class="loader">
-          <div class="bar"></div>
-        </div>
-      </div>
-    </div>
-  `,
+  templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent {
-  @Input() user: User | null = null;
-  @Output() menuToggle = new EventEmitter<void>();
-  @Output() logout = new EventEmitter<void>();
+export class HeaderComponent implements OnInit {
+  @Input() sidebarCollapsed = false;
+  @Output() toggleSidebar = new EventEmitter<void>();
 
-  userMenuOpen = false;
-  showProgress = false;
+  currentUser: User | null = null;
+  pageTitle = 'Dashboard';
+  breadcrumbs: Breadcrumb[] = [];
+  showUserDropdown = false;
 
-  onMenuToggle(): void {
-    this.menuToggle.emit();
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
+
+  ngOnInit(): void {
+    // Get current user
+    this.authService.currentUser$.subscribe(user => {
+      this.currentUser = user;
+    });
+
+    // Listen to route changes for page title and breadcrumbs
+    this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      this.updatePageInfo();
+    });
+
+    // Initialize page info
+    this.updatePageInfo();
   }
 
-  toggleUserMenu(event: Event): void {
-    event.preventDefault();
-    this.userMenuOpen = !this.userMenuOpen;
+  // Close dropdown when clicking outside
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const target = event.target as HTMLElement;
+    if (!target.closest('.user-profile')) {
+      this.showUserDropdown = false;
+    }
   }
 
-  onLogout(event: Event): void {
-    event.preventDefault();
-    this.userMenuOpen = false;
-    this.logout.emit();
+  onToggleSidebar(): void {
+    this.toggleSidebar.emit();
   }
 
-  // Method to show/hide progress bar (can be called from parent)
-  setProgress(show: boolean): void {
-    this.showProgress = show;
+  toggleUserDropdown(): void {
+    this.showUserDropdown = !this.showUserDropdown;
+  }
+
+  viewProfile(): void {
+    this.showUserDropdown = false;
+    // Navigate to profile page or open profile modal
+    console.log('View profile');
+  }
+
+  changePassword(): void {
+    this.showUserDropdown = false;
+    // Open change password modal
+    console.log('Change password');
+  }
+
+  logout(): void {
+    this.showUserDropdown = false;
+    this.authService.logout().subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: (error) => {
+        console.error('Logout error:', error);
+        // Force navigation even if logout API fails
+        this.router.navigate(['/login']);
+      }
+    });
+  }
+
+  private updatePageInfo(): void {
+    const url = this.router.url;
+
+    // Update page title based on current route
+    if (url === '/dashboard' || url === '/') {
+      this.pageTitle = 'Dashboard';
+      this.breadcrumbs = [];
+    } else if (url.startsWith('/User')) {
+      this.pageTitle = 'User Management';
+      this.breadcrumbs = [
+        { label: 'Home', route: '/dashboard' },
+        { label: 'Users' }
+      ];
+    } else if (url.startsWith('/Report')) {
+      this.pageTitle = 'Reports';
+      this.breadcrumbs = [
+        { label: 'Home', route: '/dashboard' },
+        { label: 'Reports' }
+      ];
+    } else if (url.startsWith('/Miscellaneous')) {
+      this.pageTitle = 'Miscellaneous';
+      this.breadcrumbs = [
+        { label: 'Home', route: '/dashboard' },
+        { label: 'Miscellaneous' }
+      ];
+    } else {
+      // Get title from localStorage (matching AngularJS pattern)
+      const storedTitle = localStorage.getItem('CurrentPageTitle');
+      this.pageTitle = storedTitle || 'Dashboard';
+      this.breadcrumbs = storedTitle ? [
+        { label: 'Home', route: '/dashboard' },
+        { label: storedTitle }
+      ] : [];
+    }
   }
 }

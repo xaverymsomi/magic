@@ -1,134 +1,47 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
-import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 export interface MenuItem {
   id: string;
   name: string;
-  title: string;
-  link: string;
   icon: string;
-  submenus: SubMenuItem[];
-}
-
-export interface SubMenuItem {
-  name: string;
-  title: string;
-  link: string;
-  icon: string;
+  route?: string;
+  permission?: string;
+  children?: MenuItem[];
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class MenuService {
-  constructor(private apiService: ApiService) {}
+  private menuItemsSubject = new BehaviorSubject<MenuItem[]>([]);
+  public menuItems$ = this.menuItemsSubject.asObservable();
 
-  // Preserve getUserMenu logic from original AngularJS (app-angular.js)
-  getUserMenu(userId: string | number): Observable<MenuItem[]> {
-    // In the original AngularJS, this was called from menuController
-    // Original endpoint: /menu/get_user_menus?user_id=
-    return this.apiService.get(`/menu/get_user_menus?user_id=${userId}`).pipe(
-      map((response: any) => {
-        if (response && response.data) {
-          return this.transformMenuData(response.data);
+  constructor(private http: HttpClient) {}
+
+  // Preserve menuController::getUserMenu() logic
+  getUserMenu(userId: string): Observable<any> {
+    return this.http.get(`${environment.apiUrl}/menu/get_user_menus?user_id=${userId}`);
+  }
+
+  // Load menu items based on user permissions
+  loadUserMenu(userId: string): void {
+    this.getUserMenu(userId).subscribe({
+      next: (response: any) => {
+        if (response.data) {
+          this.menuItemsSubject.next(response.data);
         }
-        // Fallback to default menu structure if API fails
-        return this.getDefaultMenu();
-      }),
-      catchError(error => {
-        console.warn('Failed to load user menu, using default:', error);
-        return of(this.getDefaultMenu());
-      })
-    );
-  }
-
-  private transformMenuData(menuData: any[]): MenuItem[] {
-    return menuData.map(menu => ({
-      id: menu.id.toString(),
-      name: menu.name,
-      title: menu.title || menu.name,
-      link: menu.link,
-      icon: menu.icon,
-      submenus: menu.submenus ? menu.submenus.map((sub: any) => ({
-        name: sub.name,
-        title: sub.title || sub.name,
-        link: sub.link,
-        icon: sub.icon
-      })) : []
-    }));
-  }
-
-  // Default menu structure based on original AngularJS application
-  private getDefaultMenu(): MenuItem[] {
-    return [
-      {
-        id: '1',
-        name: 'Home',
-        title: 'Dashboard',
-        link: '/dashboard',
-        icon: 'home',
-        submenus: []
       },
-      {
-        id: '2',
-        name: 'Users',
-        title: 'User Management',
-        link: '/users',
-        icon: 'users',
-        submenus: [
-          {
-            name: 'All Users',
-            title: 'View All Users',
-            link: '/users/list',
-            icon: 'pe-7s-users'
-          },
-          {
-            name: 'Add User',
-            title: 'Add New User',
-            link: '/users/create',
-            icon: 'pe-7s-user-plus'
-          }
-        ]
-      },
-      {
-        id: '3',
-        name: 'Reports',
-        title: 'Reports',
-        link: '/reports',
-        icon: 'note',
-        submenus: [
-          {
-            name: 'Generate Report',
-            title: 'Generate New Report',
-            link: '/reports/generate',
-            icon: 'pe-7s-note2'
-          },
-          {
-            name: 'View Reports',
-            title: 'View All Reports',
-            link: '/reports/list',
-            icon: 'pe-7s-folder'
-          }
-        ]
-      },
-      {
-        id: '4',
-        name: 'Miscellaneous',
-        title: 'Miscellaneous',
-        link: '/misc',
-        icon: 'config',
-        submenus: []
-      },
-      {
-        id: '5',
-        name: 'Utility',
-        title: 'Utility',
-        link: '/utility',
-        icon: 'tools',
-        submenus: []
+      error: (error) => {
+        console.error('Failed to load user menu:', error);
       }
-    ];
+    });
+  }
+
+  // Get current menu items
+  getMenuItems(): MenuItem[] {
+    return this.menuItemsSubject.value;
   }
 }
