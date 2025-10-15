@@ -1,0 +1,72 @@
+{
+  "/login/login": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/login/recover": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/Login/**": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/menu/**": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/Dashboard/**": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/Logout": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/Api/**": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/assets/**": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/public/**": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  },
+  "/**/*.php": {
+    "target": "http://localhost:8080",
+    "secure": false,
+    "changeOrigin": true,
+    "followRedirects": false,
+    "logLevel": "debug"
+  }
+}

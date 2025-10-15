@@ -1,0 +1,19 @@
+/* Let original CSS handle ALL styling - no overrides */
+
+/* Fix navbar positioning to start after sidebar */
+#mabrexTopNavBar {
+  margin-left: 250px !important;
+  transition: margin-left 0.3s ease !important;
+}
+
+/* Adjust header when sidebar is collapsed */
+.sidebar-collapsed #mabrexTopNavBar {
+  margin-left: 70px !important;
+}
+
+/* Angular-specific dropdown handling only */
+.dropdown-menu {
+  &.show {
+    display: block;
+  }
+}

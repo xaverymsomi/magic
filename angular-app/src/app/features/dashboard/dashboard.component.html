@@ -1,0 +1,148 @@
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+  
+  <!-- Header -->
+  <header class="dashboard-header">
+    <div class="header-content">
+      <div class="logo-section">
+        <img src="/assets/images/rahisi/official_logo.png" alt="Rahisi Solution" class="logo">
+        <div class="company-info">
+          <h1>RAHISI SOLUTION</h1>
+          <p>BACKEND MANAGEMENT PORTAL</p>
+        </div>
+      </div>
+      
+      <div class="user-section">
+        <div class="user-info" *ngIf="currentUser">
+          <span class="welcome-text">Welcome, {{ currentUser.username || currentUser.email }}</span>
+          <button class="logout-btn" (click)="logout()">
+            <i class="fas fa-sign-out-alt"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="dashboard-main" id="page-content">
+    
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-container">
+      <div class="loading-spinner"></div>
+      <p>Loading dashboard...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !loading" class="error-container">
+      <div class="error-message">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>{{ error }}</p>
+      </div>
+    </div>
+
+    <!-- Dashboard Content -->
+    <div *ngIf="!loading && !error" class="dashboard-content">
+      
+      <!-- Admin Dashboard -->
+      <div *ngIf="hasPermission('dashboard_admin')" class="admin-dashboard">
+        <div class="dashboard-header-section">
+          <h2>Admin Dashboard</h2>
+          <div class="dashboard-controls">
+            <button 
+              *ngIf="hasPermission('create_ticket')" 
+              class="btn btn-success"
+              (click)="createNewTicket()">
+              <i class="fas fa-plus"></i> Create New Business
+            </button>
+          </div>
+        </div>
+
+        <!-- Admin Dashboard Widgets -->
+        <div class="dashboard-widgets" *ngIf="dashboardData">
+          <div class="widget-grid">
+            
+            <!-- Statistics Cards -->
+            <div class="stat-card" *ngFor="let stat of dashboardData.statistics">
+              <div class="stat-icon">
+                <i [class]="stat.icon"></i>
+              </div>
+              <div class="stat-content">
+                <h3>{{ stat.value }}</h3>
+                <p>{{ stat.label }}</p>
+              </div>
+            </div>
+
+            <!-- Recent Activities -->
+            <div class="activity-widget" *ngIf="dashboardData.recentActivities">
+              <h4>Recent Activities</h4>
+              <div class="activity-list">
+                <div class="activity-item" *ngFor="let activity of dashboardData.recentActivities">
+                  <div class="activity-time">{{ activity.time }}</div>
+                  <div class="activity-description">{{ activity.description }}</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Charts/Graphs placeholder -->
+            <div class="chart-widget" *ngIf="dashboardData.chartData">
+              <h4>Analytics Overview</h4>
+              <div class="chart-placeholder">
+                <!-- Chart.js integration will be added here -->
+                <p>Chart data visualization</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Medical Dashboard -->
+      <div *ngIf="hasPermission('dashboard_medical')" class="medical-dashboard">
+        <div class="dashboard-header-section">
+          <h2>Medical Dashboard</h2>
+        </div>
+
+        <!-- Medical Dashboard Content -->
+        <div class="dashboard-widgets" *ngIf="dashboardData">
+          <div class="widget-grid">
+            <!-- Medical-specific widgets will be added here -->
+            <div class="info-card">
+              <h4>Medical Dashboard</h4>
+              <p>Medical dashboard content will be implemented based on your specific requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finance Dashboard -->
+      <div *ngIf="hasPermission('dashboard_finance')" class="finance-dashboard">
+        <div class="dashboard-header-section">
+          <h2>Finance Dashboard</h2>
+        </div>
+
+        <!-- Finance Dashboard Content -->
+        <div class="dashboard-widgets" *ngIf="dashboardData">
+          <div class="widget-grid">
+            <!-- Finance-specific widgets will be added here -->
+            <div class="info-card">
+              <h4>Finance Dashboard</h4>
+              <p>Finance dashboard content will be implemented based on your specific requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Permission State -->
+      <div *ngIf="!hasPermission('dashboard_admin') && !hasPermission('dashboard_medical') && !hasPermission('dashboard_finance')" class="no-permission">
+        <div class="no-permission-content">
+          <i class="fas fa-lock"></i>
+          <h3>Access Restricted</h3>
+          <p>You don't have permission to access any dashboard modules.</p>
+          <p>Please contact your administrator for access.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>

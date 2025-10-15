@@ -1,0 +1,354 @@
+// Preserving original login styles from modules/Login/Views/index.php
+*,
+:after,
+:before {
+  box-sizing: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  background-color: #fff;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: Poppins-Regular, sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -ms-overflow-style: scrollbar;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: white !important;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+button {
+  outline: none !important;
+  border: none;
+  background: 0 0;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.7;
+  color: #666;
+  margin: 0;
+  transition: all .4s;
+  -webkit-transition: all .4s;
+  -o-transition: all .4s;
+  -moz-transition: all .4s;
+}
+
+// Container and form styles
+.container-login100 {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+}
+
+.wrap-login100 {
+  width: 500px;
+  background: hsla(232, 58%, 10%, 1);
+  background: linear-gradient(315deg, hsla(232, 58%, 10%, 1) 0%, hsla(199, 89%, 37%, 1) 100%);
+  background: -moz-linear-gradient(315deg, hsla(232, 58%, 10%, 1) 0%, hsla(199, 89%, 37%, 1) 100%);
+  background: -webkit-linear-gradient(315deg, hsla(232, 58%, 10%, 1) 0%, hsla(199, 89%, 37%, 1) 100%);
+  opacity: 0.95;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 77px 55px 33px 55px;
+  box-shadow: 0 5px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.login100-form {
+  width: 100%;
+}
+
+.login100-form-title {
+  display: block;
+  font-family: Poppins-Bold;
+  font-size: 30px;
+  color: #fff;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.wrap-input100 {
+  width: 100%;
+  position: relative;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.24);
+  margin-bottom: 30px;
+}
+
+.input100 {
+  font-family: Poppins-Regular;
+  font-size: 16px;
+  color: #fff;
+  line-height: 1.2;
+  display: block;
+  width: 100%;
+  height: 45px;
+  background: transparent;
+  padding: 0 5px 0 38px;
+}
+
+.input100.error {
+  border-bottom-color: #ff6b6b;
+}
+
+.focus-input100 {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.login__icon {
+    position: absolute;
+    font-size: 18px;
+    color: #fff;
+    display: block;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.login__icon.name path {
+    stroke-dasharray: 73.50196075439453;
+    stroke-dashoffset: 73.50196075439453;
+    -webkit-animation: animatePath 2s 0.5s forwards;
+    animation: animatePath 2s 0.5s forwards;
+}
+
+.login__icon.pass path {
+    stroke-dasharray: 92.10662841796875;
+    stroke-dashoffset: 92.10662841796875;
+    -webkit-animation: animatePath 2s 0.5s forwards;
+    animation: animatePath 2s 0.5s forwards;
+}
+
+.container-login100-form-btn {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 13px;
+}
+
+.login100-form-btn {
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: auto;
+  min-width: 120px;
+  max-width: 200px;
+  height: 45px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  transition: all 0.4s;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.login100-form-btn:hover {
+  background-color: #f8f9fa;
+  color: #333;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.login100-form-btn:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.recover_pwd_btn {
+  font-family: Poppins-Medium;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  width: auto;
+  min-width: 120px;
+  max-width: 200px;
+  height: 45px;
+  background-color: #ffffff;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.4s;
+  margin: 0 auto 20px auto;
+}
+
+.recover_pwd_btn:hover {
+  background-color: #f8f9fa;
+  color: #333;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.recover_pwd_btn:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+// Tooltip styles for captcha
+.tooltip-container {
+  position: relative;
+}
+
+.tooltip {
+  visibility: hidden;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  background-color: white;
+  padding: 5px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+.tooltip.show-tooltip {
+  visibility: visible;
+}
+
+.captcha-image {
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+// Alert styles
+.alert {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+
+.alert-danger {
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.alert-success {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+// Utility classes
+.p-b-34 {
+  padding-bottom: 34px;
+}
+
+.p-t-27 {
+  padding-top: 27px;
+}
+
+.p-t-90 {
+  padding-top: 90px;
+}
+
+.text-white {
+  color: #fff !important;
+}
+
+.txt1 {
+  font-family: Poppins-Regular;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #999;
+}
+
+.txt1:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+// SVG Animation keyframes
+@keyframes animatePath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@-webkit-keyframes animatePath {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

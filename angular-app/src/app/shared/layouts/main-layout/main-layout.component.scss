@@ -1,0 +1,51 @@
+/* Let original CSS handle ALL layout - minimal overrides for proper spacing */
+
+/* Content area spacing */
+.container-fluid {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
+
+.sidebar-collapsed .container-fluid {
+  margin-left: 70px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 9999;
+  
+  &.hidden {
+    display: none;
+  }
+}
+
+.overlay__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.overlay__content {
+  text-align: center;
+}
+
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

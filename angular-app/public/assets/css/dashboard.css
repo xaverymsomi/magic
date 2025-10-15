@@ -1,0 +1,2338 @@
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidh18Smxg.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkido18Smxg.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidg18Smxg.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidv18Smxg.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidj18Smxg.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkidi18Smxg.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZZMkids18Q.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7qsDJT9g.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7jsDJT9g.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7rsDJT9g.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7ksDJT9g.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7osDJT9g.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7psDJT9g.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK1dSBYKcSV-LCoeQqfX1RYOo3qPZ7nsDI.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdh18Smxg.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdo18Smxg.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdg18Smxg.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdv18Smxg.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdj18Smxg.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCdi18Smxg.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: italic;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKwdSBYKcSV-LCoeQqfX1RYOo3qPZY4lCds18Q.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmhduz8A.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwkxduz8A.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmxduz8A.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlBduz8A.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmBduz8A.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwmRduz8A.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 300;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ik4zwlxdu.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNa7lqDY.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qPK7lqDY.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNK7lqDY.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qO67lqDY.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qN67lqDY.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qNq7lqDY.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xK3dSBYKcSV-LCoeQqfX1RYOo3qOK7l.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmhduz8A.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwkxduz8A.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmxduz8A.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlBduz8A.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmBduz8A.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwmRduz8A.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 600;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3i54rwlxdu.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmhduz8A.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwkxduz8A.woff2) format('woff2');
+    unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmxduz8A.woff2) format('woff2');
+    unicode-range: U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlBduz8A.woff2) format('woff2');
+    unicode-range: U+0370-03FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmBduz8A.woff2) format('woff2');
+    unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwmRduz8A.woff2) format('woff2');
+    unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-style: normal;
+    font-weight: 700;
+    src: url(https://fonts.gstatic.com/s/sourcesanspro/v14/6xKydSBYKcSV-LCoeQqfX1RYOo3ig4vwlxdu.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+
+.content {
+    min-height: 250px;
+    padding: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.content-wrapper, .main-footer {
+    -webkit-transition: -webkit-transform .3s ease-in-out, margin .3s ease-in-out;
+    -moz-transition: -moz-transform .3s ease-in-out, margin .3s ease-in-out;
+    -o-transition: -o-transform .3s ease-in-out, margin .3s ease-in-out;
+    transition: transform .3s ease-in-out, margin .3s ease-in-out;
+    margin-left: 230px;
+    z-index: 820;
+    transition-duration: 0.3s, 0.3s;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-delay: 0s, 0s;
+    transition-property: transform, margin;
+}
+
+.content-wrapper {
+    min-height: calc(100vh - 101px);
+    background-color: #ecf0f5;
+    z-index: 800;
+}
+
+.wrapper {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    background-color: #222d32;
+}
+
+body {
+    margin: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+html {
+    font-family: sans-serif;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+html {
+    font-size: 10px;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    float: left;
+}
+
+.col-xs-6 {
+    width: 50%;
+}
+
+:after, :before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.small-box {
+
+    position: relative;
+    display: block;
+    margin-bottom: 20px;
+    padding-top: 5px;
+    border-radius: 5px;
+    background: rgb(92, 121, 232);
+    box-shadow: 2px 5px 5px #cecece;
+}
+
+.bg-red, .bg-yellow, .bg-aqua, .bg-blue, .bg-light-blue, .bg-green, .bg-navy, .bg-teal, .bg-olive, .bg-lime, .bg-orange, .bg-fuchsia, .bg-purple, .bg-maroon, .bg-black, .bg-red-active, .bg-yellow-active, .bg-aqua-active, .bg-blue-active, .bg-light-blue-active, .bg-green-active, .bg-navy-active, .bg-teal-active, .bg-olive-active, .bg-lime-active, .bg-orange-active, .bg-fuchsia-active, .bg-purple-active, .bg-maroon-active, .bg-black-active, .callout.callout-danger, .callout.callout-warning, .callout.callout-info, .callout.callout-success, .alert-success, .alert-danger, .alert-error, .alert-warning, .alert-info, .label-danger, .label-info, .label-warning, .label-primary, .label-success, .modal-primary .modal-body, .modal-primary .modal-header, .modal-primary .modal-footer, .modal-warning .modal-body, .modal-warning .modal-header, .modal-warning .modal-footer, .modal-info .modal-body, .modal-info .modal-header, .modal-info .modal-footer, .modal-success .modal-body, .modal-success .modal-header, .modal-success .modal-footer, .modal-danger .modal-body, .modal-danger .modal-header, .modal-danger .modal-footer {
+    color: #fff !important;
+}
+
+.bg-green, .callout.callout-success, .alert-success, .label-success, .modal-success .modal-body {
+    background-color: #00a65a !important;
+}
+
+.small-box:hover {
+    text-decoration: none;
+    color: #f9f9f9;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.small-box > .inner {
+    padding: 10px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.small-box .icon {
+    -webkit-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    z-index: 0;
+    font-size: 90px;
+    color: rgba(0, 0, 0, 0.15);
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transition-property: all;
+}
+
+.small-box:hover .icon {
+    font-size: 95px;
+}
+
+a {
+    background-color: transparent;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+a {
+    color: #3c8dbc;
+}
+
+.small-box > .small-box-footer {
+    position: relative;
+    text-align: center;
+    padding: 3px 0;
+    color: #fff;
+    color: rgba(255, 255, 255, 0.8);
+    display: block;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    padding-top: 3px;
+    padding-right: 0px;
+    padding-bottom: 3px;
+    padding-left: 0px;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgba(0, 0, 0, 0.1);
+    text-decoration-line: none;
+    text-decoration-thickness: initial;
+    text-decoration-style: initial;
+    text-decoration-color: initial;
+}
+
+.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.h3, h3 {
+    font-size: 24px;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.small-box h3 {
+    font-size: 26px;
+    font-weight: bold;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+
+.small-box h3, .small-box p {
+    z-index: 5;
+}
+
+p {
+    margin: 0 0 10px;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+}
+
+.small-box p {
+    font-size: 15px;
+}
+
+.ion, .ionicons, .ion-alert:before, .ion-alert-circled:before, .ion-android-add:before, .ion-android-add-circle:before, .ion-android-alarm-clock:before, .ion-android-alert:before, .ion-android-apps:before, .ion-android-archive:before, .ion-android-arrow-back:before, .ion-android-arrow-down:before, .ion-android-arrow-dropdown:before, .ion-android-arrow-dropdown-circle:before, .ion-android-arrow-dropleft:before, .ion-android-arrow-dropleft-circle:before, .ion-android-arrow-dropright:before, .ion-android-arrow-dropright-circle:before, .ion-android-arrow-dropup:before, .ion-android-arrow-dropup-circle:before, .ion-android-arrow-forward:before, .ion-android-arrow-up:before, .ion-android-attach:before, .ion-android-bar:before, .ion-android-bicycle:before, .ion-android-boat:before, .ion-android-bookmark:before, .ion-android-bulb:before, .ion-android-bus:before, .ion-android-calendar:before, .ion-android-call:before, .ion-android-camera:before, .ion-android-cancel:before, .ion-android-car:before, .ion-android-cart:before, .ion-android-chat:before, .ion-android-checkbox:before, .ion-android-checkbox-blank:before, .ion-android-checkbox-outline:before, .ion-android-checkbox-outline-blank:before, .ion-android-checkmark-circle:before, .ion-android-clipboard:before, .ion-android-close:before, .ion-android-cloud:before, .ion-android-cloud-circle:before, .ion-android-cloud-done:before, .ion-android-cloud-outline:before, .ion-android-color-palette:before, .ion-android-compass:before, .ion-android-contact:before, .ion-android-contacts:before, .ion-android-contract:before, .ion-android-create:before, .ion-android-delete:before, .ion-android-desktop:before, .ion-android-document:before, .ion-android-done:before, .ion-android-done-all:before, .ion-android-download:before, .ion-android-drafts:before, .ion-android-exit:before, .ion-android-expand:before, .ion-android-favorite:before, .ion-android-favorite-outline:before, .ion-android-film:before, .ion-android-folder:before, .ion-android-folder-open:before, .ion-android-funnel:before, .ion-android-globe:before, .ion-android-hand:before, .ion-android-hangout:before, .ion-android-happy:before, .ion-android-home:before, .ion-android-image:before, .ion-android-laptop:before, .ion-android-list:before, .ion-android-locate:before, .ion-android-lock:before, .ion-android-mail:before, .ion-android-map:before, .ion-android-menu:before, .ion-android-microphone:before, .ion-android-microphone-off:before, .ion-android-more-horizontal:before, .ion-android-more-vertical:before, .ion-android-navigate:before, .ion-android-notifications:before, .ion-android-notifications-none:before, .ion-android-notifications-off:before, .ion-android-open:before, .ion-android-options:before, .ion-android-people:before, .ion-android-person:before, .ion-android-person-add:before, .ion-android-phone-landscape:before, .ion-android-phone-portrait:before, .ion-android-pin:before, .ion-android-plane:before, .ion-android-playstore:before, .ion-android-print:before, .ion-android-radio-button-off:before, .ion-android-radio-button-on:before, .ion-android-refresh:before, .ion-android-remove:before, .ion-android-remove-circle:before, .ion-android-restaurant:before, .ion-android-sad:before, .ion-android-search:before, .ion-android-send:before, .ion-android-settings:before, .ion-android-share:before, .ion-android-share-alt:before, .ion-android-star:before, .ion-android-star-half:before, .ion-android-star-outline:before, .ion-android-stopwatch:before, .ion-android-subway:before, .ion-android-sunny:before, .ion-android-sync:before, .ion-android-textsms:before, .ion-android-time:before, .ion-android-train:before, .ion-android-unlock:before, .ion-android-upload:before, .ion-android-volume-down:before, .ion-android-volume-mute:before, .ion-android-volume-off:before, .ion-android-volume-up:before, .ion-android-walk:before, .ion-android-warning:before, .ion-android-watch:before, .ion-android-wifi:before, .ion-aperture:before, .ion-archive:before, .ion-arrow-down-a:before, .ion-arrow-down-b:before, .ion-arrow-down-c:before, .ion-arrow-expand:before, .ion-arrow-graph-down-left:before, .ion-arrow-graph-down-right:before, .ion-arrow-graph-up-left:before, .ion-arrow-graph-up-right:before, .ion-arrow-left-a:before, .ion-arrow-left-b:before, .ion-arrow-left-c:before, .ion-arrow-move:before, .ion-arrow-resize:before, .ion-arrow-return-left:before, .ion-arrow-return-right:before, .ion-arrow-right-a:before, .ion-arrow-right-b:before, .ion-arrow-right-c:before, .ion-arrow-shrink:before, .ion-arrow-swap:before, .ion-arrow-up-a:before, .ion-arrow-up-b:before, .ion-arrow-up-c:before, .ion-asterisk:before, .ion-at:before, .ion-backspace:before, .ion-backspace-outline:before, .ion-bag:before, .ion-battery-charging:before, .ion-battery-empty:before, .ion-battery-full:before, .ion-battery-half:before, .ion-battery-low:before, .ion-beaker:before, .ion-beer:before, .ion-bluetooth:before, .ion-bonfire:before, .ion-bookmark:before, .ion-bowtie:before, .ion-briefcase:before, .ion-bug:before, .ion-calculator:before, .ion-calendar:before, .ion-camera:before, .ion-card:before, .ion-cash:before, .ion-chatbox:before, .ion-chatbox-working:before, .ion-chatboxes:before, .ion-chatbubble:before, .ion-chatbubble-working:before, .ion-chatbubbles:before, .ion-checkmark:before, .ion-checkmark-circled:before, .ion-checkmark-round:before, .ion-chevron-down:before, .ion-chevron-left:before, .ion-chevron-right:before, .ion-chevron-up:before, .ion-clipboard:before, .ion-clock:before, .ion-close:before, .ion-close-circled:before, .ion-close-round:before, .ion-closed-captioning:before, .ion-cloud:before, .ion-code:before, .ion-code-download:before, .ion-code-working:before, .ion-coffee:before, .ion-compass:before, .ion-compose:before, .ion-connection-bars:before, .ion-contrast:before, .ion-crop:before, .ion-cube:before, .ion-disc:before, .ion-document:before, .ion-document-text:before, .ion-drag:before, .ion-earth:before, .ion-easel:before, .ion-edit:before, .ion-egg:before, .ion-eject:before, .ion-email:before, .ion-email-unread:before, .ion-erlenmeyer-flask:before, .ion-erlenmeyer-flask-bubbles:before, .ion-eye:before, .ion-eye-disabled:before, .ion-female:before, .ion-filing:before, .ion-film-marker:before, .ion-fireball:before, .ion-flag:before, .ion-flame:before, .ion-flash:before, .ion-flash-off:before, .ion-folder:before, .ion-fork:before, .ion-fork-repo:before, .ion-forward:before, .ion-funnel:before, .ion-gear-a:before, .ion-gear-b:before, .ion-grid:before, .ion-hammer:before, .ion-happy:before, .ion-happy-outline:before, .ion-headphone:before, .ion-heart:before, .ion-heart-broken:before, .ion-help:before, .ion-help-buoy:before, .ion-help-circled:before, .ion-home:before, .ion-icecream:before, .ion-image:before, .ion-images:before, .ion-information:before, .ion-information-circled:before, .ion-ionic:before, .ion-ios-alarm:before, .ion-ios-alarm-outline:before, .ion-ios-albums:before, .ion-ios-albums-outline:before, .ion-ios-americanfootball:before, .ion-ios-americanfootball-outline:before, .ion-ios-analytics:before, .ion-ios-analytics-outline:before, .ion-ios-arrow-back:before, .ion-ios-arrow-down:before, .ion-ios-arrow-forward:before, .ion-ios-arrow-left:before, .ion-ios-arrow-right:before, .ion-ios-arrow-thin-down:before, .ion-ios-arrow-thin-left:before, .ion-ios-arrow-thin-right:before, .ion-ios-arrow-thin-up:before, .ion-ios-arrow-up:before, .ion-ios-at:before, .ion-ios-at-outline:before, .ion-ios-barcode:before, .ion-ios-barcode-outline:before, .ion-ios-baseball:before, .ion-ios-baseball-outline:before, .ion-ios-basketball:before, .ion-ios-basketball-outline:before, .ion-ios-bell:before, .ion-ios-bell-outline:before, .ion-ios-body:before, .ion-ios-body-outline:before, .ion-ios-bolt:before, .ion-ios-bolt-outline:before, .ion-ios-book:before, .ion-ios-book-outline:before, .ion-ios-bookmarks:before, .ion-ios-bookmarks-outline:before, .ion-ios-box:before, .ion-ios-box-outline:before, .ion-ios-briefcase:before, .ion-ios-briefcase-outline:before, .ion-ios-browsers:before, .ion-ios-browsers-outline:before, .ion-ios-calculator:before, .ion-ios-calculator-outline:before, .ion-ios-calendar:before, .ion-ios-calendar-outline:before, .ion-ios-camera:before, .ion-ios-camera-outline:before, .ion-ios-cart:before, .ion-ios-cart-outline:before, .ion-ios-chatboxes:before, .ion-ios-chatboxes-outline:before, .ion-ios-chatbubble:before, .ion-ios-chatbubble-outline:before, .ion-ios-checkmark:before, .ion-ios-checkmark-empty:before, .ion-ios-checkmark-outline:before, .ion-ios-circle-filled:before, .ion-ios-circle-outline:before, .ion-ios-clock:before, .ion-ios-clock-outline:before, .ion-ios-close:before, .ion-ios-close-empty:before, .ion-ios-close-outline:before, .ion-ios-cloud:before, .ion-ios-cloud-download:before, .ion-ios-cloud-download-outline:before, .ion-ios-cloud-outline:before, .ion-ios-cloud-upload:before, .ion-ios-cloud-upload-outline:before, .ion-ios-cloudy:before, .ion-ios-cloudy-night:before, .ion-ios-cloudy-night-outline:before, .ion-ios-cloudy-outline:before, .ion-ios-cog:before, .ion-ios-cog-outline:before, .ion-ios-color-filter:before, .ion-ios-color-filter-outline:before, .ion-ios-color-wand:before, .ion-ios-color-wand-outline:before, .ion-ios-compose:before, .ion-ios-compose-outline:before, .ion-ios-contact:before, .ion-ios-contact-outline:before, .ion-ios-copy:before, .ion-ios-copy-outline:before, .ion-ios-crop:before, .ion-ios-crop-strong:before, .ion-ios-download:before, .ion-ios-download-outline:before, .ion-ios-drag:before, .ion-ios-email:before, .ion-ios-email-outline:before, .ion-ios-eye:before, .ion-ios-eye-outline:before, .ion-ios-fastforward:before, .ion-ios-fastforward-outline:before, .ion-ios-filing:before, .ion-ios-filing-outline:before, .ion-ios-film:before, .ion-ios-film-outline:before, .ion-ios-flag:before, .ion-ios-flag-outline:before, .ion-ios-flame:before, .ion-ios-flame-outline:before, .ion-ios-flask:before, .ion-ios-flask-outline:before, .ion-ios-flower:before, .ion-ios-flower-outline:before, .ion-ios-folder:before, .ion-ios-folder-outline:before, .ion-ios-football:before, .ion-ios-football-outline:before, .ion-ios-game-controller-a:before, .ion-ios-game-controller-a-outline:before, .ion-ios-game-controller-b:before, .ion-ios-game-controller-b-outline:before, .ion-ios-gear:before, .ion-ios-gear-outline:before, .ion-ios-glasses:before, .ion-ios-glasses-outline:before, .ion-ios-grid-view:before, .ion-ios-grid-view-outline:before, .ion-ios-heart:before, .ion-ios-heart-outline:before, .ion-ios-help:before, .ion-ios-help-empty:before, .ion-ios-help-outline:before, .ion-ios-home:before, .ion-ios-home-outline:before, .ion-ios-infinite:before, .ion-ios-infinite-outline:before, .ion-ios-information:before, .ion-ios-information-empty:before, .ion-ios-information-outline:before, .ion-ios-ionic-outline:before, .ion-ios-keypad:before, .ion-ios-keypad-outline:before, .ion-ios-lightbulb:before, .ion-ios-lightbulb-outline:before, .ion-ios-list:before, .ion-ios-list-outline:before, .ion-ios-location:before, .ion-ios-location-outline:before, .ion-ios-locked:before, .ion-ios-locked-outline:before, .ion-ios-loop:before, .ion-ios-loop-strong:before, .ion-ios-medical:before, .ion-ios-medical-outline:before, .ion-ios-medkit:before, .ion-ios-medkit-outline:before, .ion-ios-mic:before, .ion-ios-mic-off:before, .ion-ios-mic-outline:before, .ion-ios-minus:before, .ion-ios-minus-empty:before, .ion-ios-minus-outline:before, .ion-ios-monitor:before, .ion-ios-monitor-outline:before, .ion-ios-moon:before, .ion-ios-moon-outline:before, .ion-ios-more:before, .ion-ios-more-outline:before, .ion-ios-musical-note:before, .ion-ios-musical-notes:before, .ion-ios-navigate:before, .ion-ios-navigate-outline:before, .ion-ios-nutrition:before, .ion-ios-nutrition-outline:before, .ion-ios-paper:before, .ion-ios-paper-outline:before, .ion-ios-paperplane:before, .ion-ios-paperplane-outline:before, .ion-ios-partlysunny:before, .ion-ios-partlysunny-outline:before, .ion-ios-pause:before, .ion-ios-pause-outline:before, .ion-ios-paw:before, .ion-ios-paw-outline:before, .ion-ios-people:before, .ion-ios-people-outline:before, .ion-ios-person:before, .ion-ios-person-outline:before, .ion-ios-personadd:before, .ion-ios-personadd-outline:before, .ion-ios-photos:before, .ion-ios-photos-outline:before, .ion-ios-pie:before, .ion-ios-pie-outline:before, .ion-ios-pint:before, .ion-ios-pint-outline:before, .ion-ios-play:before, .ion-ios-play-outline:before, .ion-ios-plus:before, .ion-ios-plus-empty:before, .ion-ios-plus-outline:before, .ion-ios-pricetag:before, .ion-ios-pricetag-outline:before, .ion-ios-pricetags:before, .ion-ios-pricetags-outline:before, .ion-ios-printer:before, .ion-ios-printer-outline:before, .ion-ios-pulse:before, .ion-ios-pulse-strong:before, .ion-ios-rainy:before, .ion-ios-rainy-outline:before, .ion-ios-recording:before, .ion-ios-recording-outline:before, .ion-ios-redo:before, .ion-ios-redo-outline:before, .ion-ios-refresh:before, .ion-ios-refresh-empty:before, .ion-ios-refresh-outline:before, .ion-ios-reload:before, .ion-ios-reverse-camera:before, .ion-ios-reverse-camera-outline:before, .ion-ios-rewind:before, .ion-ios-rewind-outline:before, .ion-ios-rose:before, .ion-ios-rose-outline:before, .ion-ios-search:before, .ion-ios-search-strong:before, .ion-ios-settings:before, .ion-ios-settings-strong:before, .ion-ios-shuffle:before, .ion-ios-shuffle-strong:before, .ion-ios-skipbackward:before, .ion-ios-skipbackward-outline:before, .ion-ios-skipforward:before, .ion-ios-skipforward-outline:before, .ion-ios-snowy:before, .ion-ios-speedometer:before, .ion-ios-speedometer-outline:before, .ion-ios-star:before, .ion-ios-star-half:before, .ion-ios-star-outline:before, .ion-ios-stopwatch:before, .ion-ios-stopwatch-outline:before, .ion-ios-sunny:before, .ion-ios-sunny-outline:before, .ion-ios-telephone:before, .ion-ios-telephone-outline:before, .ion-ios-tennisball:before, .ion-ios-tennisball-outline:before, .ion-ios-thunderstorm:before, .ion-ios-thunderstorm-outline:before, .ion-ios-time:before, .ion-ios-time-outline:before, .ion-ios-timer:before, .ion-ios-timer-outline:before, .ion-ios-toggle:before, .ion-ios-toggle-outline:before, .ion-ios-trash:before, .ion-ios-trash-outline:before, .ion-ios-undo:before, .ion-ios-undo-outline:before, .ion-ios-unlocked:before, .ion-ios-unlocked-outline:before, .ion-ios-upload:before, .ion-ios-upload-outline:before, .ion-ios-videocam:before, .ion-ios-videocam-outline:before, .ion-ios-volume-high:before, .ion-ios-volume-low:before, .ion-ios-wineglass:before, .ion-ios-wineglass-outline:before, .ion-ios-world:before, .ion-ios-world-outline:before, .ion-ipad:before, .ion-iphone:before, .ion-ipod:before, .ion-jet:before, .ion-key:before, .ion-knife:before, .ion-laptop:before, .ion-leaf:before, .ion-levels:before, .ion-lightbulb:before, .ion-link:before, .ion-load-a:before, .ion-load-b:before, .ion-load-c:before, .ion-load-d:before, .ion-location:before, .ion-lock-combination:before, .ion-locked:before, .ion-log-in:before, .ion-log-out:before, .ion-loop:before, .ion-magnet:before, .ion-male:before, .ion-man:before, .ion-map:before, .ion-medkit:before, .ion-merge:before, .ion-mic-a:before, .ion-mic-b:before, .ion-mic-c:before, .ion-minus:before, .ion-minus-circled:before, .ion-minus-round:before, .ion-model-s:before, .ion-monitor:before, .ion-more:before, .ion-mouse:before, .ion-music-note:before, .ion-navicon:before, .ion-navicon-round:before, .ion-navigate:before, .ion-network:before, .ion-no-smoking:before, .ion-nuclear:before, .ion-outlet:before, .ion-paintbrush:before, .ion-paintbucket:before, .ion-paper-airplane:before, .ion-paperclip:before, .ion-pause:before, .ion-person:before, .ion-person-add:before, .ion-person-stalker:before, .ion-pie-graph:before, .ion-pin:before, .ion-pinpoint:before, .ion-pizza:before, .ion-plane:before, .ion-planet:before, .ion-play:before, .ion-playstation:before, .ion-plus:before, .ion-plus-circled:before, .ion-plus-round:before, .ion-podium:before, .ion-pound:before, .ion-power:before, .ion-pricetag:before, .ion-pricetags:before, .ion-printer:before, .ion-pull-request:before, .ion-qr-scanner:before, .ion-quote:before, .ion-radio-waves:before, .ion-record:before, .ion-refresh:before, .ion-reply:before, .ion-reply-all:before, .ion-ribbon-a:before, .ion-ribbon-b:before, .ion-sad:before, .ion-sad-outline:before, .ion-scissors:before, .ion-search:before, .ion-settings:before, .ion-share:before, .ion-shuffle:before, .ion-skip-backward:before, .ion-skip-forward:before, .ion-social-android:before, .ion-social-android-outline:before, .ion-social-angular:before, .ion-social-angular-outline:before, .ion-social-apple:before, .ion-social-apple-outline:before, .ion-social-bitcoin:before, .ion-social-bitcoin-outline:before, .ion-social-buffer:before, .ion-social-buffer-outline:before, .ion-social-chrome:before, .ion-social-chrome-outline:before, .ion-social-codepen:before, .ion-social-codepen-outline:before, .ion-social-css3:before, .ion-social-css3-outline:before, .ion-social-designernews:before, .ion-social-designernews-outline:before, .ion-social-dribbble:before, .ion-social-dribbble-outline:before, .ion-social-dropbox:before, .ion-social-dropbox-outline:before, .ion-social-euro:before, .ion-social-euro-outline:before, .ion-social-facebook:before, .ion-social-facebook-outline:before, .ion-social-foursquare:before, .ion-social-foursquare-outline:before, .ion-social-freebsd-devil:before, .ion-social-github:before, .ion-social-github-outline:before, .ion-social-google:before, .ion-social-google-outline:before, .ion-social-googleplus:before, .ion-social-googleplus-outline:before, .ion-social-hackernews:before, .ion-social-hackernews-outline:before, .ion-social-html5:before, .ion-social-html5-outline:before, .ion-social-instagram:before, .ion-social-instagram-outline:before, .ion-social-javascript:before, .ion-social-javascript-outline:before, .ion-social-linkedin:before, .ion-social-linkedin-outline:before, .ion-social-markdown:before, .ion-social-nodejs:before, .ion-social-octocat:before, .ion-social-pinterest:before, .ion-social-pinterest-outline:before, .ion-social-python:before, .ion-social-reddit:before, .ion-social-reddit-outline:before, .ion-social-rss:before, .ion-social-rss-outline:before, .ion-social-sass:before, .ion-social-skype:before, .ion-social-skype-outline:before, .ion-social-snapchat:before, .ion-social-snapchat-outline:before, .ion-social-tumblr:before, .ion-social-tumblr-outline:before, .ion-social-tux:before, .ion-social-twitch:before, .ion-social-twitch-outline:before, .ion-social-twitter:before, .ion-social-twitter-outline:before, .ion-social-usd:before, .ion-social-usd-outline:before, .ion-social-vimeo:before, .ion-social-vimeo-outline:before, .ion-social-whatsapp:before, .ion-social-whatsapp-outline:before, .ion-social-windows:before, .ion-social-windows-outline:before, .ion-social-wordpress:before, .ion-social-wordpress-outline:before, .ion-social-yahoo:before, .ion-social-yahoo-outline:before, .ion-social-yen:before, .ion-social-yen-outline:before, .ion-social-youtube:before, .ion-social-youtube-outline:before, .ion-soup-can:before, .ion-soup-can-outline:before, .ion-speakerphone:before, .ion-speedometer:before, .ion-spoon:before, .ion-star:before, .ion-stats-bars:before, .ion-steam:before, .ion-stop:before, .ion-thermometer:before, .ion-thumbsdown:before, .ion-thumbsup:before, .ion-toggle:before, .ion-toggle-filled:before, .ion-transgender:before, .ion-trash-a:before, .ion-trash-b:before, .ion-trophy:before, .ion-tshirt:before, .ion-tshirt-outline:before, .ion-umbrella:before, .ion-university:before, .ion-unlocked:before, .ion-upload:before, .ion-usb:before, .ion-videocamera:before, .ion-volume-high:before, .ion-volume-low:before, .ion-volume-medium:before, .ion-volume-mute:before, .ion-wand:before, .ion-waterdrop:before, .ion-wifi:before, .ion-wineglass:before, .ion-woman:before, .ion-wrench:before, .ion-xbox:before {
+    display: inline-block;
+    font-family: "Ionicons";
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-ligatures: normal;
+    font-variant-caps: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+}
+
+.ion-stats-bars:before {
+    content: "\f2b5";
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant-caps: normal;
+    font-variant-ligatures: normal;
+    font-variant-numeric: normal;
+    font-variant-east-asian: normal;
+    font-weight: normal;
+    font-stretch: normal;
+    line-height: 1;
+    font-family: FontAwesome;
+}
+
+.fa-arrow-circle-right:before {
+    content: "\f0a9";
+}
+
+sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+
+sup {
+    top: -.5em;
+}
+
+/*.bg-yellow, .callout.callout-warning, .alert-warning, .label-warning, .modal-warning .modal-body {
+    background: rgb(34, 193, 195);
+    background: linear-gradient(149deg, rgba(34, 193, 195, 1) 0%, rgba(252, 251, 208, 1) 98%);
+}*/
+
+.ion-person-add:before {
+    content: "\f211";
+}
+
+.bg-aqua, .callout.callout-info, .alert-info, .label-info, .modal-info .modal-body {
+    background-color: #00c0ef !important;
+}
+
+.bg-red, .callout.callout-danger, .alert-danger, .alert-error, .label-danger, .modal-danger .modal-body {
+    background-color: #dd4b39 !important;
+}
+
+
+.panel-footer .pagination {
+    margin: 0;
+}
+
+.panel .glyphicon, .list-group-item .glyphicon {
+    margin-right: 4px;
+}
+
+.panel-body .radio, .checkbox {
+    display: inline-block;
+    margin: 0px;
+    height: auto;
+}
+
+.panel-body input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+    color: rgb(128, 144, 160);
+}
+
+.list-group-item:hover, a.list-group-item:focus {
+    text-decoration: none;
+    background-color: rgb(245, 245, 245);
+}
+
+.list-group {
+    margin-bottom: 0px;
+}
+
+#most {
+    border-radius: 5px;
+    box-shadow: 2px 5px 5px #cecece;
+    padding: 0px;
+    font-size: 14px;
+}
+
+.button11 {
+    display: inline-block;
+    /*background-color:#3682F4;*/
+    /*padding: 5px 6px;*/
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: -6px 1px 10px rgba(0,0,0,.15);
+    color: #222222;
+    border: none;
+    border-radius: 0% 45% 0% 45% / 0% 200% 0% 200%;
+    transition: all 0.3s ease-in-out;
+    /*cubic-bezier(0.165, 0.84, 0.44, 1), 400ms;*/
+}
+
+
+/************************************************NEW DASHBOARD CSS**********************************************************************/
+@media (max-width: 320px){
+    #main_panel_content{
+        margin-top: 60px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 1px;
+    }
+
+    .new_card_col{
+        margin: auto;
+        width: 170px;
+    }
+
+    #business_registered_line_chart_container{
+        height: 10vh;
+    }
+
+    #business_registered_line_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_panel{
+        height: 480px!important;
+    }
+
+    #licence_type_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_container{
+        height: 25vh;
+    }
+
+    #licence_type_chart_container{
+        height: 25vh;
+    }
+
+    #business_types_line_chart_panel{
+        height: 470px!important;
+    }
+
+    #payment_summary_panel{
+        height: 470px!important;
+    }
+
+    #top_licences_given_panel{
+        height: 470px!important;
+    }
+
+    #gender_doughnut_chart_panel{
+        height: 470px!important;
+    }
+
+    #job_specification_panel{
+        height: 470px!important;
+    }
+
+    #nationality_type_chart_panel{
+        height: 470px!important;
+    }
+
+    #penalties_generated_chart_panel{
+        height: 588px!important;
+    }
+
+    .business_type_line_chart_container{
+        height: 30vh;
+    }
+
+    .nationality_type_chart_container{
+        height: 25vh;
+    }
+
+    .job_based_chart_container{
+        height: 25vh;
+    }
+
+    .gender_based_chart_container{
+        height: 25vh;
+    }
+
+    .penalties_generated_chart_container{
+        height: 47vh;
+    }
+}
+
+@media (min-width: 321px) and (max-width: 384px) {
+    #main_panel_content{
+        margin-top: 60px;
+    }
+
+    @media (max-width: 334px) {
+        .new_card_col{
+            margin: auto;
+            width: 180px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 180px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 180px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 180px;
+        }
+    }
+
+    @media (min-width: 335px) {
+        .new_card_col{
+            margin: auto;
+            width: 200px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 200px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 200px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 200px;
+        }
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1px;
+    }
+
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 15vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 385px) and (max-width: 425px) {
+    #main_panel_content{
+        margin-top: 60px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1px;
+    }
+
+    .new_card_col{
+        margin: auto;
+        width: 250px;
+    }
+
+    .col_business_registered_chart{
+        margin: auto;
+        width: 250px;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 250px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 250px;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 15vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 426px) and (max-width: 460px) {
+    #main_panel_content{
+        margin-top: 60px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1px;
+    }
+
+    .new_card_col{
+        margin: auto;
+        width: 290px;
+    }
+
+    .col_business_registered_chart{
+        margin: auto;
+        width: 290px;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 290px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 290px;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 18vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 470px) and (max-width: 490px) {
+    #main_panel_content{
+        margin-top: 60px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1px;
+    }
+
+    .new_card_col{
+        margin: auto;
+        width: 330px;
+    }
+
+    .col_business_registered_chart{
+        margin: auto;
+        width: 330px;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 330px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 330px;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 20vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 491px) and (max-width: 540px) {
+    #main_panel_content{
+        margin-top: 60px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1px;
+    }
+
+    @media (max-width: 511px) {
+        .new_card_col{
+            margin: auto;
+            width: 350px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 350px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 350px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 350px;
+        }
+    }
+
+    @media (min-width: 512px){
+        .new_card_col{
+            margin: auto;
+            width: 380px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 380px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 380px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 380px;
+        }
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 23vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 715px) {
+    #main_panel_content{
+        margin-top: 60px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 1px;
+    }
+
+    @media (max-width: 590px){
+        .new_card_col{
+            margin: auto;
+            width: 400px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 400px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 400px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 400px;
+        }
+    }
+
+    @media(min-width: 591px) and (max-width: 635px){
+        .new_card_col{
+            margin: auto;
+            width: 460px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 460px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 460px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 460px;
+        }
+    }
+
+    @media (min-width: 636px) and (max-width: 675px) {
+        .new_card_col{
+            margin: auto;
+            width: 490px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 490px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 490px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 490px;
+        }
+    }
+
+    @media (min-width: 676px){
+        .new_card_col{
+            margin: auto;
+            width: 530px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 530px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 530px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 530px;
+        }
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 33vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 716px) and (max-width: 772px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1px;
+    }
+
+    @media (max-width: 750px){
+        .new_card_col{
+            margin: auto;
+            width: 290px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 600px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 600px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 600px;
+        }
+    }
+
+    @media (min-width: 751px){
+        .new_card_col{
+            margin: auto;
+            width: 290px;
+        }
+
+        .col_business_registered_chart{
+            margin: auto;
+            width: 600px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 600px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 600px;
+        }
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 38vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 25vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 773px) and (max-width: 820px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1px;
+    }
+
+    @media (max-width: 800px){
+        .new_card_col{
+            margin: auto;
+            width: 310px;
+        }
+
+        .col_business_registered_chart{
+            grid-column-start: 1;
+            grid-column-end: 3;
+            width: 640px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 315px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 315px;
+        }
+    }
+
+    @media (min-width: 801px){
+        .new_card_col{
+            margin: auto;
+            width: 320px;
+        }
+
+        .col_business_registered_chart{
+            grid-column-start: 1;
+            grid-column-end: 3;
+            width: 660px;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 325px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 325px;
+        }
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 40vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 821px) and (max-width: 875px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 10px;
+    }
+
+    @media (max-width: 840px) {
+        .new_card_col{
+            margin: auto;
+            width: 340px;
+        }
+
+        .col_business_registered_chart{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+        }
+
+        .business_registered_line_chart_container{
+            height: 40vh;
+        }
+    }
+
+    @media (min-width: 841px) {
+        .col_business_registered_chart{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+        }
+
+        .business_registered_line_chart_container{
+            height: 43vh;
+        }
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 876px) and (max-width: 900px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 1px;
+    }
+    .new_card_col{
+        margin: auto;
+        width: 365px;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+
+    .col_business_registered_chart{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 370px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 370px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 45vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 960px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    @media (max-width: 920px){
+
+        .new_card_col{
+            margin: auto;
+            width: 250px;
+        }
+
+        .registered_business_row_section{
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 10px;
+        }
+
+        .col_business_registered_chart{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 370px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 370px;
+        }
+
+    }
+
+    @media (min-width: 921px){
+        .new_card_col{
+            margin: auto;
+            width: 250px;
+        }
+
+        .registered_business_row_section{
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 10px;
+        }
+
+        .col_business_registered_chart{
+            grid-column-start: 1;
+            grid-column-end: 3;
+        }
+
+        .col_business_types_registered_chart{
+            margin: auto;
+            width: 390px;
+        }
+
+        .col_licence_issued_chart{
+            margin: auto;
+            width: 390px;
+        }
+    }
+
+    .business_registered_line_chart_container{
+        height: 50vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 961px) and (max-width: 991px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+    }
+
+    .new_card_col{
+        margin: auto;
+        width: 260px;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+
+    .col_business_registered_chart{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 390px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 390px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 50vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1070px) {
+
+    #main_panel_content{
+        margin-top: 10px;
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 5px;
+        max-width: 100%;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+
+    .col_business_registered_chart{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 410px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 410px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 55vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 1071px) and (max-width: 1150px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: auto auto auto;
+        grid-gap: 1px;
+    }
+
+    .new_card_col{
+        margin: auto;
+        width: 250px;
+    }
+
+    .registered_business_row_section{
+        display: grid;
+        grid-template-columns: auto;
+        grid-gap: 10px;
+    }
+
+    .col_business_registered_chart{
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+
+    .col_business_types_registered_chart{
+        margin: auto;
+        width: 410px;
+    }
+
+    .col_licence_issued_chart{
+        margin: auto;
+        width: 410px;
+    }
+
+    .business_registered_line_chart_container{
+        height: 55vh;
+    }
+
+    .business_type_registered_container{
+        height: 25vh;
+    }
+
+    .licence_type_chart_container{
+        height: 27vh;
+    }
+
+    .licence_types_rows_section{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        grid-gap: 1px;
+    }
+
+    .col_licence_types_one{
+        margin: auto;
+    }
+
+    .col_licence_types_two{
+        margin: auto;
+    }
+
+    .col_licence_types_three{
+        margin: auto;
+    }
+}
+
+@media (min-width: 1151px) and (max-width: 1250px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+    }
+    .new_card_col{
+        margin: auto;
+        width: 290px;
+    }
+}
+
+@media (min-width: 1251px) and (max-width: 1300px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+    }
+    .new_card_col{
+        margin: auto;
+        width: 310px;
+    }
+}
+
+@media (min-width: 1301px) and (max-width: 1400px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1px;
+    }
+    .new_card_col{
+        margin: auto;
+        width: 350px;
+    }
+}
+
+@media (min-width: 1401px) and (max-width: 1500px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 1px;
+    }
+    .new_card_col{
+        margin: auto;
+        width: 220px;
+    }
+
+    #business_registered_line_chart_container{
+        height: 10vh;
+    }
+
+    #business_registered_line_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_panel{
+        height: 480px!important;
+    }
+
+    #licence_type_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_container{
+        height: 25vh;
+    }
+
+    #licence_type_chart_container{
+        height: 25vh;
+    }
+
+    #business_types_line_chart_panel{
+        height: 470px!important;
+    }
+
+    #payment_summary_panel{
+        height: 470px!important;
+    }
+
+    #top_licences_given_panel{
+        height: 470px!important;
+    }
+
+    #gender_doughnut_chart_panel{
+        height: 470px!important;
+    }
+
+    #job_specification_panel{
+        height: 470px!important;
+    }
+
+    #nationality_type_chart_panel{
+        height: 470px!important;
+    }
+
+    #penalties_generated_chart_panel{
+        height: 588px!important;
+    }
+
+    .business_type_line_chart_container{
+        height: 30vh;
+    }
+
+    .nationality_type_chart_container{
+        height: 25vh;
+    }
+
+    .job_based_chart_container{
+        height: 25vh;
+    }
+
+    .gender_based_chart_container{
+        height: 25vh;
+    }
+
+    .penalties_generated_chart_container{
+        height: 47vh;
+    }
+}
+
+@media (min-width: 1501px) and (max-width: 1629px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+    .top_row_card{
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-gap: 5px;
+    }
+    .new_card_col{
+        margin: auto;
+        width: 240px;
+    }
+
+    #business_registered_line_chart_container{
+        height: 10vh;
+    }
+
+    #business_registered_line_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_panel{
+        height: 480px!important;
+    }
+
+    #licence_type_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_container{
+        height: 25vh;
+    }
+
+    #licence_type_chart_container{
+        height: 25vh;
+    }
+
+    #business_types_line_chart_panel{
+        height: 470px!important;
+    }
+
+    #payment_summary_panel{
+        height: 470px!important;
+    }
+
+    #top_licences_given_panel{
+        height: 470px!important;
+    }
+
+    #gender_doughnut_chart_panel{
+        height: 470px!important;
+    }
+
+    #job_specification_panel{
+        height: 470px!important;
+    }
+
+    #nationality_type_chart_panel{
+        height: 470px!important;
+    }
+
+    #penalties_generated_chart_panel{
+        height: 588px!important;
+    }
+
+    .business_type_line_chart_container{
+        height: 30vh;
+    }
+
+    .nationality_type_chart_container{
+        height: 25vh;
+    }
+
+    .job_based_chart_container{
+        height: 25vh;
+    }
+
+    .gender_based_chart_container{
+        height: 25vh;
+    }
+
+    .penalties_generated_chart_container{
+        height: 47vh;
+    }
+}
+
+@media (min-width: 1630px) {
+    #main_panel_content{
+        margin-top: 10px;
+    }
+
+    .top_row_card{
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-gap: 10px;
+    }
+
+    #business_registered_line_chart_container{
+        height: 10vh;
+    }
+
+    #business_registered_line_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_panel{
+        height: 480px!important;
+    }
+
+    #licence_type_chart_panel{
+        height: 480px!important;
+    }
+
+    #business_type_registered_container{
+        height: 25vh;
+    }
+
+    #licence_type_chart_container{
+        height: 25vh;
+    }
+
+    #business_types_line_chart_panel{
+        height: 470px!important;
+    }
+
+    #payment_summary_panel{
+        height: 470px!important;
+    }
+
+    #top_licences_given_panel{
+        height: 470px!important;
+    }
+
+    #gender_doughnut_chart_panel{
+        height: 470px!important;
+    }
+
+    #job_specification_panel{
+        height: 470px!important;
+    }
+
+    #nationality_type_chart_panel{
+        height: 470px!important;
+    }
+
+    #penalties_generated_chart_panel{
+        height: 588px!important;
+    }
+
+    .business_type_line_chart_container{
+        height: 30vh;
+    }
+
+    .nationality_type_chart_container{
+        height: 25vh;
+    }
+
+    .job_based_chart_container{
+        height: 25vh;
+    }
+
+    .gender_based_chart_container{
+        height: 25vh;
+    }
+
+    .penalties_generated_chart_container{
+        height: 47vh;
+    }
+
+}
+/************************************************NEW DASHBOARD CSS**********************************************************************/

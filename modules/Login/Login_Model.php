@@ -24,6 +24,9 @@ class Login_Model extends Model
     public function initiateLogin($email, $password, $return_url, $captcha_string) : void
     {
         $redirect_loc = URL . '/' . $return_url;
+        $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+        
         //check for captcha
         $captcha = new CaptchaLib();
         $captcha_response = $captcha->testCapture($captcha_string);
@@ -35,6 +38,10 @@ class Login_Model extends Model
 
 	        if (isset($result['error'])) {
 		        // Block login if already active elsewhere
+		        if ($isAjax) {
+		            $this->sendJsonResponse(false, 100, $result['error']);
+		            return;
+		        }
 		        Session::init();
 		        Session::set('returned', $result['error']); // optional custom code
 		        Session::set('error_message', $result['error']);
@@ -76,18 +83,42 @@ class Login_Model extends Model
                 $state_update = $this->updateUserState($result[1]['id'], $result[1]['int_token']);
                 if ($state_update) {
                     Log::sysLog('Login Successful');
+                    if ($isAjax) {
+                        $userData = [
+                            'id' => $result[1]['id'],
+                            'user_id' => $result[1]['user_id'],
+                            'username' => $result[1]['txt_name'],
+                            'email' => $email,
+                            'domain' => $result[1]['txt_domain'],
+                            'role' => $result[0]['opt_mx_group_id']
+                        ];
+                        $this->sendJsonResponse(true, 200, 'Login successful', $userData);
+                        return;
+                    }
                 } else {
                     Session::init();
                     Session::set('returned', 10); //login failed
+                    if ($isAjax) {
+                        $this->sendJsonResponse(false, 100, 'Login failed');
+                        return;
+                    }
                 }
             } else {
                 Session::init();
                 Session::set('returned', 10); //login failed
+                if ($isAjax) {
+                    $this->sendJsonResponse(false, 100, 'Invalid credentials');
+                    return;
+                }
             }
 	        header('location: ' . $redirect_loc);
         } else {
             Session::init();
             Session::set('returned', 1993); //login failed
+            if ($isAjax) {
+                $this->sendJsonResponse(false, 100, 'Invalid captcha');
+                return;
+            }
             header('location: ' . URL);
         }
     }
@@ -249,5 +280,22 @@ class Login_Model extends Model
             Session::set('returned', 6061); //User does not exist
         }
         header('location: ' . URL);
+    }
+
+    private function sendJsonResponse(bool $success, int $code, string $message, array $data = null): void
+    {
+        header('Content-Type: application/json');
+        $response = [
+            'status' => $success ? 'success' : 'error',
+            'code' => $code,
+            'message' => $message
+        ];
+        
+        if ($data !== null) {
+            $response['user'] = $data;
+        }
+        
+        echo json_encode($response);
+        exit;
     }
 }

@@ -1,0 +1,177 @@
+<!-- Preserving the exact UI design from modules/Login/Views/index.php -->
+<div class="container-login100" [style.background-image]="'url(/assets/images/mabrex_bg.jpg)'">
+  <div class="wrap-login100">
+
+    <!-- Login Form - Preserving original structure -->
+    <form class="login100-form validate-form"
+          *ngIf="currentTask === 'login'"
+          [formGroup]="loginForm"
+          (ngSubmit)="onLogin()">
+
+      <span class="login-header">
+        <img src="/assets/images/rahisi/official_logo.png"
+             width="20%"
+             style="margin-left:40%"
+             class="img img-responsive text-center">
+        <h4 class="text-center" style="color:#FFFFFF; font-size: 2rem; font-weight: 400;">
+          RAHISI SOLUTION
+        </h4>
+        <h5 class="text-center" style="color:#FFFFFF; font-size: 1em; margin-top: 15px; font-weight: 400;">
+          BACKEND MANAGEMENT PORTAL
+        </h5>
+      </span>
+
+      <span class="login100-form-title p-b-34 p-t-27">
+        LOGIN
+      </span>
+
+      <!-- Email Field -->
+      <div class="wrap-input100 validate-input"
+           [attr.data-validate]="isFieldInvalid(loginForm, 'email') ? getFieldError(loginForm, 'email') : 'Enter email'">
+        <input class="input100"
+               type="email"
+               formControlName="email"
+               placeholder="Email Address"
+               [class.error]="isFieldInvalid(loginForm, 'email')" />
+        <span class="focus-input100">
+          <svg class="login__icon name svg-icon" viewBox="0 0 24 24">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </span>
+      </div>
+
+      <!-- Password Field -->
+      <div class="wrap-input100 validate-input"
+           [attr.data-validate]="isFieldInvalid(loginForm, 'password') ? getFieldError(loginForm, 'password') : 'Enter password'">
+        <input class="input100"
+               type="password"
+               formControlName="password"
+               placeholder="Password"
+               [class.error]="isFieldInvalid(loginForm, 'password')" />
+        <span class="focus-input100">
+          <svg class="login__icon pass svg-icon" viewBox="0 0 24 24">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <circle cx="12" cy="16" r="1"></circle>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </span>
+      </div>
+
+      <!-- Captcha Field -->
+      <div class="wrap-input100 validate-input">
+        <input class="input100"
+               type="text"
+               formControlName="captcha"
+               placeholder="Captcha"
+               (focus)="onFocusShowRecaptcha()"
+               (keydown)="onKeyShowRecaptcha($event)"
+               [class.error]="isFieldInvalid(loginForm, 'captcha')" />
+        <span class="focus-input100">
+          <svg class="login__icon pass svg-icon" viewBox="0 0 24 24">
+            <path d="M23 12a11.05 11.05 0 0 0-22 0zm-5 7a3 3 0 0 1-6 0v-7a3 3 0 0 1 6 0z"></path>
+            <circle cx="12" cy="17" r="1"></circle>
+          </svg>
+          <span class="tooltip-container" style="margin-left: 50%">
+            <span class="tooltip">
+              <img style="display:inline;"
+                   [src]="captchaImageUrl"
+                   alt="CAPTCHA"
+                   class="captcha-image"
+                   (click)="loadCaptcha()">
+            </span>
+          </span>
+        </span>
+      </div>
+
+      <!-- Error/Success Messages -->
+      <div *ngIf="errorMessage" class="alert alert-danger" style="margin: 15px 0;">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="alert alert-success" style="margin: 15px 0;">
+        {{ successMessage }}
+      </div>
+
+      <!-- Login Button -->
+      <div class="container-login100-form-btn">
+        <button class="login100-form-btn"
+                type="submit"
+                [disabled]="loginForm.invalid || processing">
+          <span *ngIf="processing">Logging in...</span>
+          <span *ngIf="!processing">Login</span>
+        </button>
+      </div>
+
+      <!-- Forgot Password Link -->
+      <div class="text-center p-t-90 text-white">
+        <a class="txt1" href="#" (click)="switchTask('recover'); $event.preventDefault()">
+          Forgot Password?
+        </a>
+      </div>
+    </form>
+
+    <!-- Password Recovery Form -->
+    <form *ngIf="currentTask === 'recover'"
+          [formGroup]="recoverForm"
+          (ngSubmit)="onRecover()">
+
+      <span class="login-header">
+        <img src="/assets/images/rahisi/official_logo.png"
+             width="20%"
+             style="margin-left:40%"
+             class="img img-responsive text-center">
+        <h4 class="text-center" style="color:#FFFFFF; font-size: 2rem; font-weight: 400;">
+          RAHISI SOLUTION
+        </h4>
+        <h5 class="text-center" style="color:#FFFFFF; font-size: 1em; margin-top: 15px; font-weight: 400;">
+          BACKEND MANAGEMENT PORTAL
+        </h5>
+      </span>
+
+      <br>
+      <span class="text-center">
+        <h3 style="color:white; text-transform: uppercase;">Password Recovery</h3>
+      </span>
+      <br>
+
+      <!-- Email Field for Recovery -->
+      <div class="wrap-input100 validate-input"
+           [attr.data-validate]="isFieldInvalid(recoverForm, 'email') ? getFieldError(recoverForm, 'email') : 'Enter email'">
+        <input class="input100"
+               type="email"
+               formControlName="email"
+               placeholder="Email Address"
+               [class.error]="isFieldInvalid(recoverForm, 'email')" />
+        <span class="focus-input100">
+          <svg class="login__icon name svg-icon" viewBox="0 0 20 20">
+            <path d="M0,20 a10,8 0 0,1 20,0z M10,0 a4,4 0 0,1 0,8 a4,4 0 0,1 0,-8" />
+          </svg>
+        </span>
+      </div>
+
+      <!-- Error/Success Messages -->
+      <div *ngIf="errorMessage" class="alert alert-danger" style="margin: 15px 0;">
+        {{ errorMessage }}
+      </div>
+      <div *ngIf="successMessage" class="alert alert-success" style="margin: 15px 0;">
+        {{ successMessage }}
+      </div>
+
+      <!-- Recovery Button -->
+      <input type="submit"
+             class="recover_pwd_btn col-md-offset-3"
+             [disabled]="recoverForm.invalid || processing"
+             [value]="processing ? 'Sending...' : 'Recover Password'" />
+
+      <br><br><br>
+
+      <!-- Back to Login Link -->
+      <div class="text-white">
+        <a href="#" class="txt1" (click)="switchTask('login'); $event.preventDefault()">
+          Back to Login Page
+        </a>
+      </div>
+    </form>
+
+  </div>
+</div>

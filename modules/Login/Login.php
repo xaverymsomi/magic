@@ -14,7 +14,14 @@ class Login extends Controller
     {
         parent::__construct();
         $this->model = new Login_Model();
-        Auth::checkLogin();
+        
+        // Skip auth check for AJAX requests (Angular app)
+        $isAjax = isset($_SERVER['HTTP_X_REQUESTED_WITH']) && 
+                 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest';
+        
+        if (!$isAjax) {
+            Auth::checkLogin();
+        }
     }
 
     public function index() : void

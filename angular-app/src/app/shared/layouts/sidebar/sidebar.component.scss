@@ -1,0 +1,18 @@
+/* Let original CSS handle ALL styling - minimal overrides for Angular functionality */
+
+/* Sidebar collapse functionality */
+#mabrexSideNavBar.collapsed {
+  width: 70px !important;
+  
+  span {
+    display: none;
+  }
+  
+  .pull-right {
+    display: none;
+  }
+}
+
+#mabrexLogoPlaceholder.collapsed {
+  width: 70px !important;
+}
