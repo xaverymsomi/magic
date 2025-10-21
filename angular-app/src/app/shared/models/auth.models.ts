@@ -1,22 +1,24 @@
 export interface User {
   id: number;
-  username: string;
   email: string;
+  username: string;
   role: string;
-  avatar?: string;
   permissions: Permission[];
+  first_name?: string;
+  last_name?: string;
+  avatar?: string;
 }
 
 export interface Permission {
   id: number;
   name: string;
-  module: string;
+  description?: string;
 }
 
 export interface LoginRequest {
   email: string;
   password: string;
-  captcha: string;
+  captcha?: string;
   return_url?: string;
 }
 
@@ -31,12 +33,4 @@ export interface LoginResponse {
 
 export interface RecoverPasswordRequest {
   email: string;
-}
-
-export interface AuthResponse {
-  status: boolean;
-  code: number;
-  message: string;
-  user?: User;
-  token?: string;
 }

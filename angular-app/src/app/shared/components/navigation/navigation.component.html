@@ -2,8 +2,17 @@
   <!-- Navigation Header -->
   <div class="nav-header">
     <div class="nav-brand">
-      <img src="/assets/images/rahisi/official_rahisi_logo_coloured.png" alt="Magic Framework" class="nav-logo">
-<!--      <span class="nav-title" *ngIf="!collapsed">Magic Framework</span>-->
+      <div class="rahisi-logo" *ngIf="!collapsed">
+        <span class="logo-letter r">r</span>
+        <span class="logo-letter a">a</span>
+        <span class="logo-letter h">h</span>
+        <span class="logo-letter i">i</span>
+        <span class="logo-letter s">s</span>
+        <span class="logo-letter i2">i</span>
+      </div>
+      <div class="rahisi-logo-collapsed" *ngIf="collapsed">
+        <span class="logo-letter r">r</span>
+      </div>
     </div>
     <button
       mat-icon-button
@@ -39,7 +48,7 @@
           matTooltipPosition="right">
 
           <!-- Menu Icon -->
-          <i class="nav-icon" [class]="getMenuIcon(menuItem)"></i>
+          <mat-icon class="nav-icon">{{ getMenuIcon(menuItem) }}</mat-icon>
 
           <!-- Menu Name -->
           <span class="nav-text" *ngIf="!collapsed">{{ menuItem.name }}</span>
@@ -70,7 +79,7 @@
               [matTooltip]="collapsed ? subItem.name : ''"
               matTooltipPosition="right">
 
-              <i class="nav-subicon" [class]="getMenuIcon(subItem)"></i>
+              <mat-icon class="nav-subicon">{{ getMenuIcon(subItem) }}</mat-icon>
               <span class="nav-subtext" *ngIf="!collapsed">{{ subItem.name }}</span>
             </a>
           </li>

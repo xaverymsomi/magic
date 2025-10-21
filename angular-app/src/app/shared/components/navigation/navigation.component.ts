@@ -1,14 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule, NavigationEnd } from '@angular/router'; // ✅ Added RouterModule here
+import { Router, NavigationEnd } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-import { MenuService, MenuItem } from '@core/services/menu.service';
-import { AuthService } from '@core/services/auth.service';
+import { MenuService, MenuItem } from '../../../core/services/menu.service';
 
 @Component({
   selector: 'app-navigation',
@@ -16,31 +16,97 @@ import { AuthService } from '@core/services/auth.service';
   imports: [
     CommonModule,
     MatIconModule,
-    RouterModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    RouterModule
   ],
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit, OnDestroy {
+  collapsed = false;
   menuItems: MenuItem[] = [];
-  activeMenuId: string = '';
-  menuLoaded: boolean = false;
-  collapsed: boolean = false;
+  menuLoaded = false;
+  currentRoute = '';
 
   private subscriptions: Subscription[] = [];
 
+  // Fallback menu items matching the original design
+  private fallbackMenuItems: MenuItem[] = [
+    {
+      id: 'home',
+      name: 'Home',
+      icon: 'pe-7s-home',
+      route: '/dashboard',
+      order: 1
+    },
+    {
+      id: 'users',
+      name: 'Users',
+      icon: 'pe-7s-users',
+      route: '/users',
+      order: 2,
+      children: [
+        {
+          id: 'users-list',
+          name: 'User List',
+          icon: 'pe-7s-user',
+          route: '/users/list'
+        },
+        {
+          id: 'users-create',
+          name: 'Create User',
+          icon: 'pe-7s-add-user',
+          route: '/users/create'
+        }
+      ]
+    },
+    {
+      id: 'reports',
+      name: 'Reports',
+      icon: 'pe-7s-graph1',
+      route: '/reports',
+      order: 3
+    },
+    {
+      id: 'miscellaneous',
+      name: 'Miscellaneous',
+      icon: 'pe-7s-config',
+      route: '/miscellaneous',
+      order: 4
+    },
+    {
+      id: 'utility',
+      name: 'Utility',
+      icon: 'pe-7s-tools',
+      route: '/utility',
+      order: 5,
+      children: [
+        {
+          id: 'utility-backup',
+          name: 'Database Backup',
+          icon: 'pe-7s-cloud-download',
+          route: '/utility/backup'
+        },
+        {
+          id: 'utility-settings',
+          name: 'System Settings',
+          icon: 'pe-7s-settings',
+          route: '/utility/settings'
+        }
+      ]
+    }
+  ];
+
   constructor(
     private menuService: MenuService,
-    private authService: AuthService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
     this.initializeNavigation();
-    this.subscribeToRouterEvents();
-    this.subscribeToMenuChanges();
+    this.subscribeToRouteChanges();
+    this.subscribeToMenuService();
   }
 
   ngOnDestroy(): void {
@@ -48,138 +114,145 @@ export class NavigationComponent implements OnInit, OnDestroy {
   }
 
   private initializeNavigation(): void {
-    // Load user menu on component initialization
-    if (this.authService.isAuthenticated()) {
-      this.loadUserMenu();
-    }
-  }
-
-  private loadUserMenu(): void {
-    const loadMenuSub = this.menuService.loadUserMenu().subscribe({
-      next: (loaded: boolean) => {
-        if (loaded) {
+    // Try to load user menu, fallback to default menu
+    this.menuService.loadUserMenu().subscribe({
+      next: (success) => {
+        if (success) {
           this.menuLoaded = true;
-          this.setActiveMenuFromCurrentRoute();
+        } else {
+          // Use fallback menu items if loading fails
+          this.menuItems = [...this.fallbackMenuItems];
+          this.menuLoaded = true;
+          console.log('Using fallback menu items');
         }
       },
       error: (error) => {
-        console.error('Failed to load navigation menu:', error);
+        console.error('Failed to load menu, using fallback:', error);
+        this.menuItems = [...this.fallbackMenuItems];
+        this.menuLoaded = true;
       }
     });
-    this.subscriptions.push(loadMenuSub);
   }
 
-  private subscribeToMenuChanges(): void {
-    // Subscribe to menu items changes
-    const menuItemsSub = this.menuService.menuItems$.subscribe(items => {
-      this.menuItems = items;
+  private subscribeToRouteChanges(): void {
+    const routeSubscription = this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.currentRoute = event.url;
+        this.updateActiveMenuFromRoute();
+      });
+
+    this.subscriptions.push(routeSubscription);
+  }
+
+  private subscribeToMenuService(): void {
+    const menuSubscription = this.menuService.menuItems$.subscribe(items => {
+      if (items && items.length > 0) {
+        this.menuItems = items;
+        this.updateActiveMenuFromRoute();
+      }
     });
 
-    // Subscribe to active menu changes
-    const activeMenuSub = this.menuService.activeMenu$.subscribe(activeId => {
-      this.activeMenuId = activeId;
-    });
-
-    // Subscribe to menu loaded state
-    const menuLoadedSub = this.menuService.menuLoaded$.subscribe(loaded => {
+    const loadedSubscription = this.menuService.menuLoaded$.subscribe(loaded => {
       this.menuLoaded = loaded;
     });
 
-    this.subscriptions.push(menuItemsSub, activeMenuSub, menuLoadedSub);
+    this.subscriptions.push(menuSubscription, loadedSubscription);
   }
 
-  private subscribeToRouterEvents(): void {
-    // Listen to route changes to update active menu
-    const routerSub = this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.setActiveMenuFromCurrentRoute();
-    });
-
-    this.subscriptions.push(routerSub);
-  }
-
-  private setActiveMenuFromCurrentRoute(): void {
-    const currentRoute = this.router.url;
-    const menuItem = this.menuService.findMenuByRoute(currentRoute);
-    if (menuItem) {
-      this.menuService.setActiveMenu(menuItem.id);
+  private updateActiveMenuFromRoute(): void {
+    const activeMenu = this.menuService.findMenuByRoute(this.currentRoute);
+    if (activeMenu) {
+      this.menuService.setActiveMenu(activeMenu.id);
     }
   }
 
-  // Handle menu item click
+  toggleNavigation(): void {
+    this.collapsed = !this.collapsed;
+  }
+
   onMenuClick(menuItem: MenuItem, event: Event): void {
     event.preventDefault();
-    event.stopPropagation();
 
-    // If menu has children, toggle expansion
+    // Handle menu items with children
     if (menuItem.children && menuItem.children.length > 0) {
       this.menuService.toggleMenuExpansion(menuItem.id);
       return;
     }
 
-    // Navigate to menu route
+    // Handle navigation
     if (menuItem.route) {
       this.menuService.setActiveMenu(menuItem.id);
       this.router.navigate([menuItem.route]);
     } else if (menuItem.url) {
-      // Handle legacy URL format
-      this.menuService.setActiveMenu(menuItem.id);
-      this.router.navigate([`/${menuItem.url.toLowerCase()}`]);
+      // Handle external URLs or legacy PHP routes
+      window.location.href = menuItem.url;
     }
   }
 
-  // Check if menu item has permission
-  hasPermission(menuItem: MenuItem): boolean {
-    if (!menuItem.permission) {
+  isMenuActive(menuItem: MenuItem): boolean {
+    if (menuItem.active) return true;
+
+    // Check if current route matches menu route
+    if (menuItem.route && this.currentRoute.startsWith(menuItem.route)) {
       return true;
     }
-    return this.authService.hasPermission(menuItem.permission);
+
+    // Check if any child is active
+    if (menuItem.children) {
+      return menuItem.children.some(child => this.isMenuActive(child));
+    }
+
+    return false;
   }
 
-  // Check if menu item is active
-  isMenuActive(menuItem: MenuItem): boolean {
-    return menuItem.active || false;
-  }
-
-  // Check if menu item is expanded
   isMenuExpanded(menuItem: MenuItem): boolean {
     return menuItem.expanded || false;
   }
 
-  // Get menu icon class
   getMenuIcon(menuItem: MenuItem): string {
-    return menuItem.icon || 'pe-7s-menu';
+    // Map PE7 icons to Material Icons or use default
+    const iconMap: { [key: string]: string } = {
+      'pe-7s-home': 'home',
+      'pe-7s-users': 'people',
+      'pe-7s-user': 'person',
+      'pe-7s-add-user': 'person_add',
+      'pe-7s-graph1': 'assessment',
+      'pe-7s-config': 'settings',
+      'pe-7s-tools': 'build',
+      'pe-7s-cloud-download': 'cloud_download',
+      'pe-7s-settings': 'tune',
+      'pe-7s-menu': 'menu'
+    };
+
+    return iconMap[menuItem.icon] || 'circle';
   }
 
-  // Handle navigation collapse/expand
-  toggleNavigation(): void {
-    this.collapsed = !this.collapsed;
-  }
-
-  // Get breadcrumb for current menu
-  getBreadcrumb(): MenuItem[] {
-    if (this.activeMenuId) {
-      return this.menuService.getBreadcrumb(this.activeMenuId);
-    }
-    return [];
-  }
-
-  // Refresh menu data
   refreshMenu(): void {
+    this.menuLoaded = false;
     this.menuService.refreshMenu().subscribe({
-      next: (loaded: boolean) => {
-        if (loaded) {
-          console.log('Menu refreshed successfully');
+      next: (success) => {
+        if (!success) {
+          // Fallback to default menu if refresh fails
+          this.menuItems = [...this.fallbackMenuItems];
         }
+        this.menuLoaded = true;
       },
-      error: (error) => {
-        console.error('Failed to refresh menu:', error);
+      error: () => {
+        this.menuItems = [...this.fallbackMenuItems];
+        this.menuLoaded = true;
       }
     });
   }
 
-  // Track by function for ngFor performance
+  getBreadcrumb(): MenuItem[] {
+    const activeMenuId = this.menuService.getActiveMenuId();
+    if (activeMenuId) {
+      return this.menuService.getBreadcrumb(activeMenuId);
+    }
+    return [];
+  }
+
   trackByMenuId(index: number, item: MenuItem): string {
     return item.id;
   }
