@@ -1,37 +1,30 @@
-<div class="main-layout">
+<div class="main-layout" [class.sidebar-collapsed]="sidebarCollapsed">
+  <!-- Header -->
+  <app-header
+    (toggleSidebar)="toggleSidebar()"
+    [sidebarCollapsed]="sidebarCollapsed">
+  </app-header>
+
   <!-- Sidebar -->
   <app-sidebar
     [isCollapsed]="sidebarCollapsed"
-    (toggleSidebar)="toggleSidebar()"
-    class="sidebar-container">
+    (toggleSidebar)="toggleSidebar()">
   </app-sidebar>
 
-  <!-- Main Content Area -->
-  <div class="content-wrapper" [class.sidebar-collapsed]="sidebarCollapsed">
-    <!-- Header -->
-    <app-header
-      [sidebarCollapsed]="sidebarCollapsed"
-      (toggleSidebar)="toggleSidebar()"
-      class="header-container">
-    </app-header>
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- Loading Overlay -->
+      <div class="loading-overlay" *ngIf="showOverlay">
+        <div class="loading-spinner"></div>
+        <span>Loading...</span>
+      </div>
 
-    <!-- Page Content -->
-    <main class="page-content" id="mabrexPageContent">
+      <!-- Router Outlet for Page Content -->
       <router-outlet></router-outlet>
-    </main>
-
-    <!-- Footer -->
-    <app-footer class="footer-container"></app-footer>
-  </div>
-
-  <!-- Loading Overlay -->
-  <div class="overlay" [class.hidden]="!showOverlay">
-    <div class="overlay-content">
-      <div class="loading-spinner"></div>
-      <p>Loading...</p>
     </div>
-  </div>
+  </main>
 
-  <!-- Notification Area -->
-  <div class="notification-area" id="notification-area"></div>
+  <!-- Footer -->
+  <app-footer></app-footer>
 </div>

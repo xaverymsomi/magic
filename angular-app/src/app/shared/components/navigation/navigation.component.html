@@ -1,0 +1,109 @@
+<nav class="app-navigation" [class.collapsed]="collapsed">
+  <!-- Navigation Header -->
+  <div class="nav-header">
+    <div class="nav-brand">
+      <img src="/assets/images/rahisi/official_rahisi_logo_coloured.png" alt="Magic Framework" class="nav-logo">
+<!--      <span class="nav-title" *ngIf="!collapsed">Magic Framework</span>-->
+    </div>
+    <button
+      mat-icon-button
+      class="nav-toggle"
+      (click)="toggleNavigation()"
+      matTooltip="Toggle Navigation">
+      <mat-icon>{{ collapsed ? 'menu_open' : 'menu' }}</mat-icon>
+    </button>
+  </div>
+
+  <!-- Loading State -->
+  <div class="nav-loading" *ngIf="!menuLoaded">
+    <div class="loading-spinner"></div>
+    <span *ngIf="!collapsed">Loading menu...</span>
+  </div>
+
+  <!-- Navigation Menu -->
+  <div class="nav-menu" *ngIf="menuLoaded">
+    <ul class="nav-list">
+      <li
+        class="nav-item"
+        *ngFor="let menuItem of menuItems; trackBy: trackByMenuId"
+        [class.active]="isMenuActive(menuItem)"
+        [class.expanded]="isMenuExpanded(menuItem)"
+        [class.has-children]="menuItem.children && menuItem.children.length > 0">
+
+        <!-- Menu Item Link -->
+        <a
+          class="nav-link"
+          [class.active]="isMenuActive(menuItem)"
+          (click)="onMenuClick(menuItem, $event)"
+          [matTooltip]="collapsed ? menuItem.name : ''"
+          matTooltipPosition="right">
+
+          <!-- Menu Icon -->
+          <i class="nav-icon" [class]="getMenuIcon(menuItem)"></i>
+
+          <!-- Menu Name -->
+          <span class="nav-text" *ngIf="!collapsed">{{ menuItem.name }}</span>
+
+          <!-- Expand/Collapse Arrow -->
+          <mat-icon
+            class="nav-arrow"
+            *ngIf="!collapsed && menuItem.children && menuItem.children.length > 0">
+            {{ isMenuExpanded(menuItem) ? 'expand_less' : 'expand_more' }}
+          </mat-icon>
+        </a>
+
+        <!-- Submenu -->
+        <ul
+          class="nav-submenu"
+          *ngIf="menuItem.children && menuItem.children.length > 0 && (isMenuExpanded(menuItem) || collapsed)"
+          [class.collapsed-submenu]="collapsed">
+
+          <li
+            class="nav-subitem"
+            *ngFor="let subItem of menuItem.children; trackBy: trackByMenuId"
+            [class.active]="isMenuActive(subItem)">
+
+            <a
+              class="nav-sublink"
+              [class.active]="isMenuActive(subItem)"
+              (click)="onMenuClick(subItem, $event)"
+              [matTooltip]="collapsed ? subItem.name : ''"
+              matTooltipPosition="right">
+
+              <i class="nav-subicon" [class]="getMenuIcon(subItem)"></i>
+              <span class="nav-subtext" *ngIf="!collapsed">{{ subItem.name }}</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Navigation Footer -->
+  <div class="nav-footer" *ngIf="!collapsed">
+    <button
+      mat-button
+      class="refresh-menu-btn"
+      (click)="refreshMenu()"
+      matTooltip="Refresh Menu">
+      <mat-icon>refresh</mat-icon>
+      <span>Refresh</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Breadcrumb (Optional) -->
+<div class="breadcrumb-container" *ngIf="!collapsed && getBreadcrumb().length > 1">
+  <nav class="breadcrumb">
+    <ol class="breadcrumb-list">
+      <li
+        class="breadcrumb-item"
+        *ngFor="let crumb of getBreadcrumb(); let last = last"
+        [class.active]="last">
+        <a *ngIf="!last" [routerLink]="crumb.route">{{ crumb.name }}</a>
+        <span *ngIf="last">{{ crumb.name }}</span>
+        <mat-icon *ngIf="!last" class="breadcrumb-separator">chevron_right</mat-icon>
+      </li>
+    </ol>
+  </nav>
+</div>
