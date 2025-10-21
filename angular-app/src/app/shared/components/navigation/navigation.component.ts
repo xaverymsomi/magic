@@ -38,26 +38,32 @@ export class NavigationComponent implements OnInit, OnDestroy {
       name: 'Home',
       icon: 'pe-7s-home',
       route: '/dashboard',
-      order: 1
+      link: '/Dashboard/index',
+      title: 'Dashboard'
     },
     {
       id: 'users',
       name: 'Users',
       icon: 'pe-7s-users',
       route: '/users',
-      order: 2,
+      link: '/Users/index',
+      title: 'Users',
       children: [
         {
           id: 'users-list',
           name: 'User List',
           icon: 'pe-7s-user',
-          route: '/users/list'
+          route: '/users/list',
+          link: '/Users/index',
+          title: 'User List'
         },
         {
           id: 'users-create',
           name: 'Create User',
           icon: 'pe-7s-add-user',
-          route: '/users/create'
+          route: '/users/create',
+          link: '/Users/create',
+          title: 'Create User'
         }
       ]
     },
@@ -66,33 +72,40 @@ export class NavigationComponent implements OnInit, OnDestroy {
       name: 'Reports',
       icon: 'pe-7s-graph1',
       route: '/reports',
-      order: 3
+      link: '/Reports/index',
+      title: 'Reports'
     },
     {
       id: 'miscellaneous',
       name: 'Miscellaneous',
       icon: 'pe-7s-config',
       route: '/miscellaneous',
-      order: 4
+      link: '/Miscellaneous/index',
+      title: 'Miscellaneous'
     },
     {
       id: 'utility',
       name: 'Utility',
       icon: 'pe-7s-tools',
       route: '/utility',
-      order: 5,
+      link: '/Utility/index',
+      title: 'Utility',
       children: [
         {
           id: 'utility-backup',
           name: 'Database Backup',
           icon: 'pe-7s-cloud-download',
-          route: '/utility/backup'
+          route: '/utility/backup',
+          link: '/Utility/backup',
+          title: 'Database Backup'
         },
         {
           id: 'utility-settings',
           name: 'System Settings',
           icon: 'pe-7s-settings',
-          route: '/utility/settings'
+          route: '/utility/settings',
+          link: '/Utility/settings',
+          title: 'System Settings'
         }
       ]
     }
@@ -180,14 +193,47 @@ export class NavigationComponent implements OnInit, OnDestroy {
       return;
     }
 
-    // Handle navigation
-    if (menuItem.route) {
+    // Handle navigation - prioritize route, then link, then url
+    if (menuItem.route && menuItem.route !== '#') {
       this.menuService.setActiveMenu(menuItem.id);
       this.router.navigate([menuItem.route]);
-    } else if (menuItem.url) {
+    } else if (menuItem.link && menuItem.link !== '#') {
+      // For old PHP links, we might need to handle them differently
+      // For now, try to convert them to Angular routes
+      const route = this.convertLinkToRoute(menuItem.link);
+      if (route && route !== '#') {
+        this.menuService.setActiveMenu(menuItem.id);
+        this.router.navigate([route]);
+      } else {
+        // Handle external URLs or legacy PHP routes
+        window.location.href = menuItem.link;
+      }
+    } else if (menuItem.url && menuItem.url !== '#') {
       // Handle external URLs or legacy PHP routes
       window.location.href = menuItem.url;
     }
+  }
+
+  private convertLinkToRoute(link: string): string {
+    if (!link || link === '#') return '#';
+
+    // Remove leading slash if present
+    link = link.startsWith('/') ? link.substring(1) : link;
+
+    // Convert common PHP routes to Angular routes
+    const parts = link.split('/');
+    if (parts.length >= 2) {
+      const module = parts[0];
+      const action = parts[1];
+
+      if (action === 'index') {
+        return `/${module.toLowerCase()}`;
+      } else {
+        return `/${module.toLowerCase()}/${action.toLowerCase()}`;
+      }
+    }
+
+    return `/${link.toLowerCase()}`;
   }
 
   isMenuActive(menuItem: MenuItem): boolean {
@@ -222,7 +268,19 @@ export class NavigationComponent implements OnInit, OnDestroy {
       'pe-7s-tools': 'build',
       'pe-7s-cloud-download': 'cloud_download',
       'pe-7s-settings': 'tune',
-      'pe-7s-menu': 'menu'
+      'pe-7s-menu': 'menu',
+      'pe-7s-note': 'note',
+      'pe-7s-folder': 'folder',
+      'pe-7s-file': 'description',
+      'pe-7s-print': 'print',
+      'pe-7s-mail': 'mail',
+      'pe-7s-phone': 'phone',
+      'pe-7s-map': 'map',
+      'pe-7s-search': 'search',
+      'pe-7s-plus': 'add',
+      'pe-7s-edit': 'edit',
+      'pe-7s-trash': 'delete',
+      'pe-7s-refresh': 'refresh'
     };
 
     return iconMap[menuItem.icon] || 'circle';

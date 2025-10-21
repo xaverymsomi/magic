@@ -13,8 +13,11 @@ export interface MenuItem {
   icon: string;
   route?: string;
   url?: string;
+  link?: string;
+  title?: string;
   permission?: string;
   children?: MenuItem[];
+  submenus?: MenuItem[];
   active?: boolean;
   expanded?: boolean;
   order?: number;
@@ -50,27 +53,27 @@ export class MenuService {
     private authService: AuthService
   ) {}
 
-  // Preserve menuController::getUserMenu() logic from original AngularJS
+  // Match the exact old AngularJS implementation
   getUserMenu(userId?: string): Observable<MenuResponse> {
     const currentUser = this.authService.getCurrentUser();
     const userIdToUse = userId || currentUser?.id?.toString() || '';
 
-    // Use original PHP endpoint pattern
-    return this.apiService.get('/Menu/get_user_menus', { user_id: userIdToUse }).pipe(
+    // Use the exact same endpoint as the old AngularJS code
+    return this.apiService.get('/menu/get_user_menus', { user_id: userIdToUse }).pipe(
       map((response: any) => {
-        // Handle PHP response format similar to original
-        if (response.status === 'success' || response.code === 200) {
+        // Handle the exact same response format as the old code
+        if (response && response.data) {
           return {
             status: true,
-            code: response.code || 200,
-            message: response.message || 'Menu loaded successfully',
-            data: this.processMenuData(response.data || response.menus || [])
+            code: 200,
+            message: 'Menu loaded successfully',
+            data: this.processMenuData(response.data)
           };
         } else {
           return {
             status: false,
-            code: response.code || 100,
-            message: response.message || 'Failed to load menu'
+            code: 100,
+            message: 'Failed to load menu'
           };
         }
       }),
@@ -85,42 +88,75 @@ export class MenuService {
     );
   }
 
-  // Process menu data to match Angular structure
+  // Process menu data to match the old AngularJS structure exactly
   private processMenuData(menuData: any[]): MenuItem[] {
     if (!Array.isArray(menuData)) {
       return [];
     }
 
-    return menuData.map(item => ({
-      id: item.id || item.menu_id || '',
-      name: item.name || item.menu_name || item.txt_name || '',
-      icon: item.icon || item.txt_icon || 'pe-7s-menu',
-      route: this.buildRoute(item),
-      url: item.url || item.txt_url || '',
-      permission: item.permission || item.txt_permission || '',
-      module: item.module || item.txt_module || '',
-      action: item.action || item.txt_action || '',
-      order: parseInt(item.order || item.int_order || '0'),
-      active: false,
-      expanded: false,
-      children: item.children ? this.processMenuData(item.children) : []
-    })).sort((a, b) => (a.order || 0) - (b.order || 0));
+    return menuData.map((item, index) => {
+      // Process submenus (old structure used 'submenus' not 'children')
+      const children = item.submenus && Array.isArray(item.submenus)
+        ? item.submenus.map((subItem: any) => ({
+          id: subItem.id || `sub-${index}-${Math.random()}`,
+          name: subItem.name || '',
+          icon: subItem.icon || 'pe-7s-menu',
+          route: this.buildRoute(subItem),
+          url: subItem.url || subItem.link || '',
+          link: subItem.link || subItem.url || '',
+          title: subItem.title || subItem.name || '',
+          active: false,
+          expanded: false
+        }))
+        : [];
+
+      return {
+        id: item.id || `menu-${index}`,
+        name: item.name || '',
+        icon: item.icon || 'pe-7s-menu',
+        route: this.buildRoute(item),
+        url: item.url || item.link || '',
+        link: item.link || item.url || '',
+        title: item.title || item.name || '',
+        active: false,
+        expanded: false,
+        children: children,
+        submenus: children // Keep both for compatibility
+      };
+    });
   }
 
-  // Build Angular route from menu item data
+  // Build Angular route from menu item data - match old behavior
   private buildRoute(item: any): string {
     if (item.route) {
       return item.route;
     }
 
-    if (item.url || item.txt_url) {
-      const url = item.url || item.txt_url;
-      return `/${url.toLowerCase()}`;
+    if (item.link && item.link !== '#') {
+      // Convert old PHP links to Angular routes
+      let link = item.link;
+
+      // Remove app folder prefix if present
+      if (link.includes('/')) {
+        const parts = link.split('/');
+        if (parts.length >= 2) {
+          const module = parts[parts.length - 2];
+          const action = parts[parts.length - 1];
+
+          // Convert common PHP routes to Angular routes
+          if (action === 'index') {
+            return `/${module.toLowerCase()}`;
+          } else {
+            return `/${module.toLowerCase()}/${action.toLowerCase()}`;
+          }
+        }
+      }
+
+      return `/${link.toLowerCase()}`;
     }
 
-    if (item.module || item.txt_module) {
-      const module = item.module || item.txt_module;
-      return `/${module.toLowerCase()}`;
+    if (item.url && item.url !== '#') {
+      return `/${item.url.toLowerCase()}`;
     }
 
     return '/dashboard';
@@ -180,11 +216,14 @@ export class MenuService {
 
   // Set active menu item
   setActiveMenu(menuId: string): void {
+    if (this.activeMenuSubject.value === menuId) return;
+
     const menus = this.getMenuItems();
     this.updateActiveMenu(menus, menuId);
     this.menuItemsSubject.next([...menus]);
     this.activeMenuSubject.next(menuId);
   }
+
 
   // Update active menu state recursively
   private updateActiveMenu(menus: MenuItem[], activeId: string): void {
