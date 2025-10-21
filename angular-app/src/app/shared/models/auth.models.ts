@@ -1,37 +1,42 @@
 export interface User {
-  id: string;
+  id: number;
   username: string;
   email: string;
-  avatar?: string;
   role: string;
-  permissions: string[];
-  created_at?: string;
-  updated_at?: string;
-  last_login?: string;
-  is_active?: boolean;
+  avatar?: string;
+  permissions: Permission[];
+}
+
+export interface Permission {
+  id: number;
+  name: string;
+  module: string;
 }
 
 export interface LoginRequest {
   email: string;
   password: string;
-  remember_me?: boolean;
+  captcha: string;
+  return_url?: string;
 }
 
 export interface LoginResponse {
   success: boolean;
+  status: boolean;
+  code: number;
   message: string;
-  data?: {
-    user: User;
-    token: string;
-    expires_in: number;
-  };
-  error?: string;
+  user?: User;
+  redirect_url?: string;
 }
 
-export interface AuthState {
-  user: User | null;
-  token: string | null;
-  isAuthenticated: boolean;
-  loading: boolean;
-  error: string | null;
+export interface RecoverPasswordRequest {
+  email: string;
+}
+
+export interface AuthResponse {
+  status: boolean;
+  code: number;
+  message: string;
+  user?: User;
+  token?: string;
 }

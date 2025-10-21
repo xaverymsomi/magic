@@ -22,7 +22,6 @@ export class LoginComponent implements OnInit {
   processing: boolean = false;
   errorMessage: string = '';
   successMessage: string = '';
-  returnUrl: string = '';
 
   constructor(
     private fb: FormBuilder,
@@ -31,9 +30,6 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    // Preserve return_url logic from original PHP
-    this.returnUrl = this.route.snapshot.queryParams['return_url'] || '/dashboard';
-    
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
@@ -47,10 +43,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadCaptcha();
-    
+
     // Check if already logged in
     if (this.authService.isAuthenticated()) {
-      this.router.navigate([this.returnUrl]);
+      this.router.navigate(['/dashboard']);
     }
   }
 
@@ -86,22 +82,20 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.valid && !this.processing) {
       this.processing = true;
       this.errorMessage = '';
-      
+
       const loginRequest: LoginRequest = {
         email: this.loginForm.value.email,
         password: this.loginForm.value.password,
-        captcha: this.loginForm.value.captcha,
-        return_url: this.returnUrl
+        captcha: this.loginForm.value.captcha
       };
 
       this.authService.login(loginRequest).subscribe({
         next: (response) => {
           this.processing = false;
-          
-          if (response.status) {
-            // Login successful - redirect to return URL or dashboard
-            const redirectUrl = this.returnUrl || '/dashboard';
-            this.router.navigate([redirectUrl]);
+
+          if (response.success) {
+            // Login successful - redirect to dashboard
+            this.router.navigate(['/dashboard']);
           } else {
             this.errorMessage = response.message || 'Login failed. Please try again.';
             this.loadCaptcha(); // Reload captcha on failed login
@@ -128,7 +122,7 @@ export class LoginComponent implements OnInit {
       }).subscribe({
         next: (response) => {
           this.processing = false;
-          
+
           if (response.status) {
             this.successMessage = 'Password recovery instructions have been sent to your email.';
             this.recoverForm.reset();
@@ -149,7 +143,7 @@ export class LoginComponent implements OnInit {
     this.currentTask = task;
     this.errorMessage = '';
     this.successMessage = '';
-    
+
     if (task === 'login') {
       this.loadCaptcha();
     }

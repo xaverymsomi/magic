@@ -68,7 +68,7 @@
                                     <li class="divider"></li>-->
                         <li><a class="page-link" href="<?php echo APP_DIR; ?>/User/password"><i class="pe pe-7s-key pe-rotate-90 pe-fw pe-2x pe-va"></i><?php echo trans('change_password'); ?>
                             </a></li>
-
+ 
                         <li class="divider"></li>
                         <li><a class="page-link" href="<?php echo APP_DIR; ?>/Logout"><i class="pe pe-7s-download pe-rotate-270 pe-fw pe-2x pe-va"></i> <?php echo trans('logout'); ?>
                             </a></li>

@@ -34,20 +34,22 @@ export class AuthService {
             id: userDetails?.id,
             email: userDetails?.email,
             username: userDetails?.username,
+            role: userDetails?.role || 'user',
             permissions: userDetails?.permissions || []
           };
-          
+
           this.currentUserSubject.next(user);
           this.isLoggedInSubject.next(true);
-          
+
           // Preserve session storage logic (PHP uses sessions)
           if (userDetails?.user_id) {
             sessionStorage.setItem('user_id', userDetails.user_id.toString());
           }
           // Store complete user data for session persistence
           sessionStorage.setItem('user_data', JSON.stringify(user));
-          
+
           return {
+            success: true,
             status: true,
             code: response.code,
             message: response.message,
@@ -56,6 +58,7 @@ export class AuthService {
           };
         } else {
           return {
+            success: false,
             status: false,
             code: response.code || 100,
             message: response.message || 'Login failed'
@@ -64,6 +67,7 @@ export class AuthService {
       }),
       catchError(error => {
         return of({
+          success: false,
           status: false,
           code: 100,
           message: 'Network error occurred'
@@ -105,7 +109,7 @@ export class AuthService {
     // Check if user data exists in sessionStorage
     const userId = sessionStorage.getItem('user_id');
     const userData = sessionStorage.getItem('user_data');
-    
+
     if (userId && userData) {
       try {
         const user = JSON.parse(userData);

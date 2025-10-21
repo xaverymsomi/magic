@@ -17,18 +17,16 @@ export class AuthGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    
+
     // Preserve Auth::checkLogin() logic
     if (this.authService.isAuthenticated()) {
       return true;
     }
 
-    // Store the attempted URL for redirecting after login
-    const returnUrl = state.url;
-    this.router.navigate(['/login'], { 
-      queryParams: { return_url: returnUrl } 
-    });
-    
+    // Navigate to login without return_url query parameter
+    // The login component will handle redirect after successful authentication
+    this.router.navigate(['/login']);
+
     return false;
   }
 }
